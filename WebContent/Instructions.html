@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>インサイダーゲームツール</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="インサイダーゲームのLINEBOTを公開しています。">
+		<meta name="keywords" content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール">
+		<link rel="stylesheet" href="./contents/css/style.css">
+		<script type="text/javascript" src="./bootstrap4/js/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="./contents/js/main.js"></script>
+		<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<script>includeHtml("./contents/include/logo.html");</script>
+			</header>
+			<script>includeHtml("./contents/include/menubar.html");</script>
+			<div id="contents">
+				<section>
+					<h2 id="mkj">目次</h2>
+					<ul class="mkj">
+						<li><a href="#01">前提</a></li>
+						<li><a href="#02">村を作る場合（GM）</a></li>
+						<li><a href="#03">村を作る場合（神）</a></li>
+						<li><a href="#04">村に参加する場合</a></li>
+						<li><a href="#05">その他（オプション）</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2 id="01">前提</h2>
+					<p>
+					<span class="color1"><strong>※参加者全員が以下のボットをお友達追加しておく必要があります！</strong></span><br>
+						<a href="https:/line.me/R/ti/p/%40966mpnqz"><img class="torokubtn" src="./contents/img/toroku.png" alt="お友達追加ボタン"></a>
+					</p>
+					<p>
+						<br>
+						<p><span class="color1"><strong>①参加者の１人が村の作成をします。</strong></span></p>
+						<div class="balloon2-top">
+							<p>『お題』と『参加人数』設定します。<br>村番号が表示されるため、それを参加者へ伝えます。</p>
+						</div>
+						<p><span class="color1"><strong>②他の参加者は作成された村に参加します。</strong></span></p>
+						<div class="balloon2-top">
+							<p>村番号（数字4桁）を入力すると自分の役職がわかります。<br>インサイダーだった場合はお題が表示されます。</p>
+						</div>
+					</p>
+				</section>
+				
+				<div class="list"></div>
+				<br>
+				
+				<section>
+					<h2 id="02">村を作る場合（GM）</h2>
+					<p>
+						<span class="color1"><strong>■村の作成者がGMとなる場合</strong></span><br>
+						GMはお題は知っていますが、どこがインサイダーかわかりません。
+					</p>
+					<h3>作成方法（赤字が操作） <a href="#option1">※1</a>  <a href="#option2">※２</a></h3>
+					<img class="manual" src="./contents/img/00_gm.png" alt="マニュアル">
+					<br><br>
+					<h3  id="option1">※１　お題の自動取得</h3>
+					<img class="manual" src="./contents/img/01_option.png" alt="マニュアル">
+					<br><br>
+					<h3  id="option2">※２　確認機能</h3>
+					<img class="manual" src="./contents/img/02_option2.png" alt="マニュアル">
+				</section>
+				
+				<section>
+					<h2 id="03">村を作る場合（神）</h2>
+					<p>
+						<span class="color1"><strong>■村の作成者が神となる場合</strong></span><br>
+						神はゲームに参加しません。GMとインサイダーを参加者へランダムに配ります。神もどこがインサイダーかわかりません。
+					</p>
+					<h3>作成方法（赤字が操作） <a href="#option1">※1</a>  <a href="#option2">※２</a></h3>
+					<img class="manual" src="./contents/img/03_god.png" alt="マニュアル">
+					<!--<br><br>
+					<h3>※１　お題の自動取得</h3>
+					<img class="manual" src="./contents/img/01_option.png" alt="マニュアル">
+					<br><br>
+					<h3>※１　確認（およびお題の投稿）</h3>
+					<img class="manual" src="./contents/img/02_option2.png" alt="マニュアル">
+					-->
+				</section>
+				
+				<section>
+					<h2 id="04">村に参加する場合</h2>
+					<p>
+						<span class="color1"><strong>■誰かが作成した村へ参加する場合</strong></span><br>
+						村番号を入力します。
+					</p>
+					<h3>参加方法（赤字が操作）</h3>
+					<img class="manual" src="./contents/img/05_mura.png" alt="マニュアル">
+					<br><br>
+					<h3>※インサイダーだった場合</h3>
+					<img class="manual" src="./contents/img/07_insider.png" alt="マニュアル">
+				</section>
+				
+				<section>
+					<h2 id="05">その他（オプション）</h2>
+					<p>
+						<span class="color1"><strong>■その他の操作</strong></span><br>
+						その他実装している機能の紹介
+					</p>
+					<h3>村を作成するボタン</h3>
+					<img class="manual" src="./contents/img/09_manu.png" alt="マニュアル">
+					<br><br>
+					<h3>他の人へ配布したい場合（QRコードの表示）</h3>
+					<img class="manual" src="./contents/img/08_haifu.png" alt="マニュアル">
+					<br><br>
+					<h3>さらなるお題の投稿</h3>
+					<a href="https://insidergamehelper.herokuapp.com/Insider"><img class="torokubtn" src="./contents/img/go.png" alt="投稿サイト"></a>
+				</section>
+			</div>
+			<!--/contents-->
+			<script>includeHtml("./contents/include/footer.html");</script>
+		</div>
+		<!--/container-->
+	</body>
+</html>
