@@ -31,6 +31,7 @@ $(function() {
 
 	var appear = false;
 	var pagetop = $('#page_top');
+	
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 100) { //100pxスクロールしたら
 			if (appear == false) {
@@ -45,15 +46,24 @@ $(function() {
 				pagetop.stop().animate({
 					'bottom' : '-100px' //下から-50pxの位置に
 				}, 300); //0.3秒かけて隠れる
-				$('#page_top').css('background-image', 'url(./contents/img/top1.png)');
+						$('#page_top').show();
+						$('#page_top2').hide();
 			}
 		}
 	});
 	pagetop.click(function() {
-		$('#page_top').css('background-image', 'url(./contents/img/top2.png)');
+		$('#page_top').hide();
+		$('#page_top2').show();
+		
 		$('body, html').animate({
 			scrollTop : 0
 		}, 500); //0.5秒かけてトップへ戻る
+		
+		setTimeout(function(){
+			$('#page_top').show();
+			$('#page_top2').hide();
+         },500);
 		return false;
 	});
+
 });

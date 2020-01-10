@@ -411,3 +411,15 @@ h2#mkj {
   margin: auto;
   text-align: center;
 }
+
+#page_top2{
+  width: 90px;
+  height: 100px;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  background-image: url(../img/top2.png);
+  opacity: 0.9;
+  display:none;
+  border-radius: 50%;
+}
