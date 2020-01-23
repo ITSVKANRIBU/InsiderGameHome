@@ -446,7 +446,7 @@ h2#mkj {
 
 .countlabel {
 	font-size: 20px;	/*文字サイズ*/
-	color: #505050;/*文字色*/
+	color: #505050 !important;/*文字色*/
 	font-weight: 900;
 } 
 
