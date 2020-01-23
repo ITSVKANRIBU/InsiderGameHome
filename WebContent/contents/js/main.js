@@ -38,6 +38,9 @@ function submitAction() {
 
 	// 通信実行
 	$.ajax({
+		headers: {
+			"Access-Control-Allow-Origin": "*"
+	    },
 		type:"post",				// method = "POST"
 		url:"https://insidergamehelper.herokuapp.com/specialvillage",		// POST送信先のURL
 		contentType: 'application/json', // リクエストの Content-Type
