@@ -10,6 +10,58 @@ function includeHtml(url) {
 		}
 	});
 }
+// サブミット用関数
+function submitAction() {
+
+	// 非活性
+	$('.button').prop('disabled', true);
+
+	// メッセージ非表示
+	$('.alert-success').hide();
+	$('.alert-danger').hide();
+	
+	// ぐるぐるにする
+	var spinner = '<span class="spinner"></span>';
+	$('.button').toggleClass('loading').html(spinner);
+	
+	var messageList = [];
+	
+	$.each($('[name="message"]'), function(index, dao) {
+		messageList.length = [index + 1]
+		messageList[index] = dao.value;
+	})
+	
+	var data = {
+		"message": messageList
+	}
+	console.log(data);
+
+	// 通信実行
+	$.ajax({
+		type:"post",				// method = "POST"
+		url:"https://insidergamehelper.herokuapp.com/specialvillage",		// POST送信先のURL
+		contentType: 'application/json', // リクエストの Content-Type
+		data:JSON.stringify(data),  // JSONデータ本体
+		dataType: "json",		   // レスポンスをJSONとしてパースする
+		success: function(json_data) {   // 200 OK時
+		setTimeout(function(){
+			$('#villagenum').text(json_data['data']);
+			$('.alert-success').show();
+		},500);
+		},
+		error: function() {		 // HTTPエラー時
+			$('.alert-danger').show();
+		},
+		complete: function() {	  // 成功・失敗に関わらず通信が終了した際の処理
+			// 活性
+			setTimeout(function(){
+				$('.button').prop('disabled', false);
+				$('.button').toggleClass('loading').html("村作成");
+			},500);
+		}
+	});
+}
+
 
 $(function() {
 	// #で始まるアンカーをクリックした場合に処理
@@ -62,8 +114,57 @@ $(function() {
 		setTimeout(function(){
 			$('#page_top').show();
 			$('#page_top2').hide();
-         },500);
+		},500);
 		return false;
 	});
 
+	//変動ボタン
+	var arySpinnerCtrl = [];
+	var num;
+	//長押し押下時
+	$('.btnspinner').on('click', function(e){
+		if(arySpinnerCtrl['interval']) return false;
+		var target = $(this).data('target');
+		arySpinnerCtrl['target'] = target;
+		arySpinnerCtrl['cal'] = Number($(this).data('cal'));
+
+		//クリックは単一の処理に留める
+		spinnerCal();
+		arySpinnerCtrl = [];
+		return false;
+
+	});
+
+	//変動計算関数
+	function spinnerCal(){
+		var target = $(arySpinnerCtrl['target']);
+		num = Number(target.val());
+		num = num + arySpinnerCtrl['cal'];
+		if(num > Number(target.data('max'))){
+			target.val(Number(target.data('max')));
+		}else if(Number(target.data('min')) > num){
+			target.val(Number(target.data('min')));
+		}else{
+			if(arySpinnerCtrl['cal'] > 0){
+				addDiv();
+			}else{
+				removeDiv();
+			}
+			target.val(num);
+		}
+	}
+
+	function addDiv(){
+		var labelstr = '参加者' + num;
+		$('.userdiv').eq(0).clone().appendTo('.group');
+		$('.userdiv').eq(num - 1).find('label').text(labelstr);
+	}
+
+	function removeDiv(){
+		var size = $('.userdiv').length;
+		$('.userdiv').eq(num).remove();
+	}
+	
 });
+
+

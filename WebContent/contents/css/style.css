@@ -380,46 +380,237 @@ h2#mkj {
 /*TOPボタン
 ---------------------------------------------------------------------------*/
 #page_top{
-  width: 90px;
-  height: 100px;
-  position: fixed;
-  right: 0;
-  bottom: -100px;
-  background-image: url(../img/top1.png);
-  opacity: 0.9;
-  border-radius: 50%;
+	width: 90px;
+	height: 100px;
+	position: fixed;
+	right: 0;
+	bottom: -100px;
+	background-image: url(../img/top1.png);
+	opacity: 0.9;
+	border-radius: 50%;
 }
 #page_top a{
-  position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  text-decoration: none;
+	position: relative;
+	display: block;
+	width: 50px;
+	height: 50px;
+	text-decoration: none;
 }
 #page_top a::before{
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  font-size: 25px;
-  color: #fff;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  top: -5px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  text-align: center;
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+	font-size: 25px;
+	color: #fff;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: -5px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	text-align: center;
 }
 
 #page_top2{
-  width: 90px;
-  height: 100px;
-  position: fixed;
-  right: 0;
-  bottom: 50px;
-  background-image: url(../img/top2.png);
-  opacity: 0.9;
-  display:none;
-  border-radius: 50%;
+	width: 90px;
+	height: 100px;
+	position: fixed;
+	right: 0;
+	bottom: 50px;
+	background-image: url(../img/top2.png);
+	opacity: 0.9;
+	display:none;
+	border-radius: 50%;
+}
+
+
+/*入力フォーム
+---------------------------------------------------------------------------*/
+.eqnoreboot {
+	line-height: 2;
+	color: #666 !important;	/*全体の文字色*/
+}
+
+.eqnoreboot a {
+	color: #666 !important;	/*リンクテキストの色*/
+}
+
+.counter1 {
+	margin-top: 0;
+	border: none !important;
+	outline: none;
+	background: none;
+	-webkit-appearance: none;
+}
+
+.countlabel {
+	font-size: 20px;	/*文字サイズ*/
+	color: #505050;/*文字色*/
+	font-weight: 900;
+} 
+
+.btnspinner{
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px
+	/* デフォルトのスピナーを消す */
+	-webkit-appearance: none;
+	-moz-appearance:textfield;
+}
+
+.spinner_area input[type="button"]{
+	cursor: pointer;
+}
+
+/*左側のコメント*/
+.messageInput {
+	width: 80%;
+	display: inline-block;
+	vertical-align: top;	/* 上に合わせる */
+	position: relative; 
+	margin: 10px 10px 0 70px;
+	padding: 10px;
+	max-width: 500px;
+	border-radius: 12px;
+	background: #edf1ee;
+	box-sizing: border-box;
+}
+
+.qroup .messageInput:after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 3px; 
+	left: -19px;
+	border: 8px solid transparent;
+	border-right: 18px solid #edf1ee;
+	-webkit-transform: rotate(35deg);
+	transform: rotate(35deg);
+}
+
+.group img {
+	position: absolute;
+	z-index: 1;
+	width: 65px;
+	height: auto;
+}
+
+.group label {
+	position: absolute;
+	z-index: 2;
+	font-size: 11px;	/*文字サイズ*/
+	border-bottom: solid 2px #80c8d1;
+	line-height: 1.4;
+	margin: 70px 0 0 10px;
+}
+
+
+/*背景*/
+.box {
+	padding: 0.2em 0.5em;
+	margin: 2em 0;
+	color: #565656;
+	background: #ffeaea;
+	box-shadow: 0px 0px 0px 10px #ffeaea;
+	border: dashed 2px #d08047;
+	border-radius: 8px;
+}
+
+/*
+---------------村作成ボタン-------------------*/
+.buttonarea {
+	position: relative;
+	height: 170px;
+}
+
+.button {
+	position: absolute;
+	height: 50px;
+	width: 200px;
+	left: calc(50% - 100px);
+	background-image: none;
+	border: none;
+	outline: none;
+	background-color: #f56464;
+	color: white;
+	text-transform: uppercase;
+	font-size: 20px;
+	letter-spacing: 2px;
+	cursor: pointer;
+	transition: all 0.2s ease-out;
+}
+.button::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 160px;
+	height: 40px;
+	background-color: black;
+	z-index: -1;
+	left: calc(50% - 80px);
+	top: 10px;
+	opacity: 0.3;
+	filter: blur(5px);
+	transition: all 0.2s ease-out;
+}
+.button:hover::after {
+	opacity: 0.5;
+	filter: blur(20px);
+	transform: translatey(10px) scalex(1.2);
+}
+.button:active {
+	background-color: #dd4b4b;
+}
+.button:active::after {
+	opacity: 0.3;
+}
+
+.button:focus {
+    /* outline: 1px dotted; */
+    outline: none;
+}
+.loading {
+	border-radius: 50px;
+	width: 50px;
+	left: calc(50% - 25px);
+}
+.button.loading::after {
+	width: 40px;
+	left: 5px;
+	top: 12px;
+	border-radius: 100%;
+}
+.spinner {
+	display: block;
+	width: 34px;
+	height: 34px;
+	position: absolute;
+	top: 8px;
+	left: calc(50% - 17px);
+	background: transparent;
+	box-sizing: border-box;
+	border-top: 4px solid white;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-radius: 100%;
+	animation: spin 0.6s ease-out infinite;
+}
+@keyframes spin {
+	100% {transform: rotate(360deg)}
+}
+
+/*
+----メッセージ---*/
+
+.infomessage {
+	position: absolute !important;
+	display: none;
+	bottom: 0;
 }
