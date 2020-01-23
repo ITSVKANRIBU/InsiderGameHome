@@ -428,7 +428,7 @@ h2#mkj {
 /*入力フォーム
 ---------------------------------------------------------------------------*/
 .eqnoreboot {
-	line-height: 2;
+	line-height: 1.5;
 	color: #666 !important;	/*全体の文字色*/
 }
 
@@ -450,7 +450,7 @@ h2#mkj {
 	font-weight: 900;
 } 
 
-.btnspinner{
+.btnspinner {
 	-ms-user-select: none;
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -458,7 +458,7 @@ h2#mkj {
 	user-select: none;
 	border-radius: 50%;
 	width: 40px;
-	height: 40px
+	height: 40px;
 	/* デフォルトのスピナーを消す */
 	-webkit-appearance: none;
 	-moz-appearance:textfield;
