@@ -60,6 +60,24 @@ function submitAction() {
 			},500);
 		}
 	});
+	
+	// 通信実行
+	$.ajax({
+		type:"post",				// method = "POST"
+		url:"https://script.google.com/macros/s/AKfycbxlgG1Vd-ZXECvaD4YB2dtyZBfQ_MyJRYnFKl97IPtKpTaZTTg/exec",		// POST送信先のURL
+		contentType: 'application/json', // リクエストの Content-Type
+		data:JSON.stringify(data),  // JSONデータ本体
+		dataType: "json",		   // レスポンスをJSONとしてパースする
+		success: function(json_data) {   // 200 OK時
+			console.log("成功");
+		},
+		error: function() {		 // HTTPエラー時
+			console.log("書き込みエラー");
+		},
+		complete: function() {	  // 成功・失敗に関わらず通信が終了した際の処理
+			console.log("完了");
+		}
+	});
 }
 
 
