@@ -65,7 +65,6 @@ function submitAction() {
 	$.ajax({
 		type:"post",				// method = "POST"
 		url:"https://script.google.com/macros/s/AKfycbxlgG1Vd-ZXECvaD4YB2dtyZBfQ_MyJRYnFKl97IPtKpTaZTTg/exec",		// POST送信先のURL
-		contentType: 'application/json', // リクエストの Content-Type
 		data:JSON.stringify(data),  // JSONデータ本体
 		dataType: "json",		   // レスポンスをJSONとしてパースする
 		success: function(json_data) {   // 200 OK時
