@@ -128,7 +128,7 @@
 .line__right figure .name{
 	position: relative;
 	top: 10px;
-	left: 15px;
+	left: -15px;
 }
 
 /* 正方形を用意 */
