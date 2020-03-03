@@ -1,0 +1,196 @@
+/*/////////////////////////////////////////////////
+//LINE風チャット画面(会話方式)を記事に表示する方法
+/////////////////////////////////////////////////*/
+/* タイトル部分 */
+.line__title {
+  background: #273246;
+  padding: 10px;
+  text-align: center;
+  font-size: 150%;
+  color: #ffffff;
+}
+
+/* 会話部分 */
+.line__contents {
+  padding: 10px;
+  overflow: hidden;
+  line-height: 135%;
+}
+
+.scroll {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/* スタンプ画像最大幅 */
+.stamp img {
+  max-width:150px;
+}
+
+/* 相手の会話 */
+.line__left {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    max-width: 80%;
+    clear: both;
+}
+
+/* アイコン画像 */
+.line__left figure {
+    width: 70px;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* 正方形を用意 */
+.line__left figure img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px
+}
+
+
+.line__left .line__left-text {
+  margin-left: 70px;
+}
+
+.name {
+  font-size: 80%;
+  color: black;
+}
+
+/* コメントエリア */
+.line__left .text {
+  margin: 0;
+  position: relative;
+  padding: 10px;
+  border: 1;
+  border-radius: 20px;
+  background-color: #fffde8;
+  border: medium solid #d08047;
+}
+
+/* 吹き出し */
+.line__left .text::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -20px;
+  top: 10px;
+  border-right: 20px solid #d08047;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 吹き出し */
+.line__left .text::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -16px;
+  top: 10px;
+  border-right: 20px solid #fffde8;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 自分の会話 */
+.line__right {
+    position: relative;
+    display: block;
+    margin: 5px 0;
+    max-width: 75%;
+    float: right;
+    margin-right: 120px;
+    clear: both;
+}
+
+
+/* アイコン画像 */
+.line__right figure {
+    width: 70px;
+    position: absolute;
+    top: -20px;
+    right: -100px;
+    padding: 0;
+    margin: 0;
+}
+
+.line__right figure .name{
+	position: relative;
+	top: 10px;
+	left: 15px;
+}
+
+/* 正方形を用意 */
+.line__right figure img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px
+}
+
+/* コメントエリア */
+.line__right .text {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #fffde8;
+  margin: 0;
+  margin-left: 80px;
+  border: medium solid #d08047;
+}
+
+/* 吹き出し */
+.line__right .text::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -16px;
+  top: 10px;
+  border-left: 20px solid #d08047;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 吹き出し */
+.line__right .text::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  right: -13px;
+  top: 10px;
+  border-left: 20px solid #fffde8;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+/* 自分がスタンプを送る時 */
+.line__right .stamp {
+  position: relative;
+  margin-left: 80px;
+}
+
+/* 既読エリア */
+.line__right .date {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100px;
+  text-align: right;
+  left: -30px;
+  bottom: 0px;
+  font-size: 80%;
+  color: #ffffff;
+}

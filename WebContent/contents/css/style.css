@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-
 /*PC・タブレット・スマホ(全端末)共通設定
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -10,33 +9,63 @@ body {
 	margin: 0px;
 	padding: 0px;
 	-webkit-text-size-adjust: none;
-	color: #666;	/*全体の文字色*/
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
-	font-size: 16px;	/*文字サイズ*/
-	line-height: 2;		/*行間*/
-	background: #fff;	/*背景色*/
+	color: #666; /*全体の文字色*/
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo,
+		Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; /*フォント種類*/
+	font-size: 16px; /*文字サイズ*/
+	line-height: 2; /*行間*/
+	background: #fff; /*背景色*/
 }
-h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form,select,input,textarea {margin: 0px;padding: 0px;font-size: 100%;font-weight: normal;}
-ul {list-style-type: none;}
-ol {padding-left: 40px;padding-bottom: 15px;}
-img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
-table {border-collapse:collapse;font-size: 100%;border-spacing: 0;}
-iframe {width: 100%;}
+
+h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd, form, figure, form,
+	select, input, textarea {
+	margin: 0px;
+	padding: 0px;
+	font-size: 100%;
+	font-weight: normal;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ol {
+	padding-left: 40px;
+	padding-bottom: 15px;
+}
+
+img {
+	border: none;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+table {
+	border-collapse: collapse;
+	font-size: 100%;
+	border-spacing: 0;
+}
+
+iframe {
+	width: 100%;
+}
 
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
 a {
-	color: #666;	/*リンクテキストの色*/
-	transition: 0.3s;	/*マウスオン時の移り変わるまでの時間設定。0.3秒。*/
+	color: #666; /*リンクテキストの色*/
+	transition: 0.3s; /*マウスオン時の移り変わるまでの時間設定。0.3秒。*/
 }
+
 a:hover {
-	color: #d08047;	/*マウスオン時の文字色*/
+	color: #d08047; /*マウスオン時の文字色*/
 }
 
 /*コンテナー（ホームページを囲む一番外側のブロック）
 ---------------------------------------------------------------------------*/
 #container {
-	max-width: 1400px;	/*ブロックの最大幅*/
+	max-width: 1400px; /*ブロックの最大幅*/
 	margin: 0 auto;
 	padding: 0 3%;
 }
@@ -45,42 +74,43 @@ a:hover {
 ---------------------------------------------------------------------------*/
 /*headerブロック*/
 header {
-	text-align: center;	/*内容を中央よせ*/
+	text-align: center; /*内容を中央よせ*/
 }
 /*ロゴ画像設定*/
 #logo img {
-	width: 400px;	/*画像幅*/
-	margin: 20px auto 20px;	/*ロゴの上と下に40pxスペースを空ける設定*/
+	width: 400px; /*画像幅*/
+	margin: 20px auto 20px; /*ロゴの上と下に40pxスペースを空ける設定*/
 }
 
 /*トップページのメイン画像
 ---------------------------------------------------------------------------*/
 /*画像ブロック*/
 #mainimg img {
-	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
-	margin-bottom: 40px;	/*下に空けるスペース*/
+	border-radius: 10px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+	margin-bottom: 40px; /*下に空けるスペース*/
 }
 
 /*メニュー
 ---------------------------------------------------------------------------*/
 /*メニュー全体を囲むブロック*/
 #menubar {
-	text-align: center;		/*文字をセンタリング*/
-	font-size: 18px;		/*文字サイズ*/
-	margin-bottom: 40px;	/*下に空けるスペース*/
+	text-align: center; /*文字をセンタリング*/
+	font-size: 18px; /*文字サイズ*/
+	margin-bottom: 40px; /*下に空けるスペース*/
 }
 /*メニュー１個あたりの設定*/
 #menubar li {
-	display: inline;	/*横並びにする設定*/
+	display: inline; /*横並びにする設定*/
 }
+
 #menubar li a {
 	text-decoration: none;
-	padding: 15px 30px;	/*各メニュー内の余白。上下に15px、左右に30pxあけるという意味。*/
+	padding: 15px 30px; /*各メニュー内の余白。上下に15px、左右に30pxあけるという意味。*/
 }
 /*マウスオン時の設定*/
 #menubar li a:hover {
-	color: #d08047;	/*文字色*/
-	border-bottom: 4px solid #d08047;	/*下線の幅、線種、色*/
+	color: #d08047; /*文字色*/
+	border-bottom: 4px solid #d08047; /*下線の幅、線種、色*/
 }
 
 /*コンテンツ（見出しバーや文字などが入っているブロック）
@@ -89,33 +119,34 @@ header {
 #contents h2 {
 	clear: both;
 	margin-bottom: 20px;
-	color: #fff;		/*文字色*/
-	padding: 10px 20px;	/*上下、左右への余白*/
-	background: #d08047;	/*背景色*/
-	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+	color: #fff; /*文字色*/
+	padding: 10px 20px; /*上下、左右への余白*/
+	background: #d08047; /*背景色*/
+	border-radius: 10px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 }
 /*コンテンツのh3タグの設定*/
 #contents h3 {
 	clear: both;
 	margin-bottom: 20px;
-	padding: 8px 20px;	/*上下、左右への余白*/
-	background: #fff;	/*背景色*/
-	border: 1px solid #ccc;	/*枠線の幅、線種、色*/
-	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+	padding: 8px 20px; /*上下、左右への余白*/
+	background: #fff; /*背景色*/
+	border: 1px solid #ccc; /*枠線の幅、線種、色*/
+	border-radius: 10px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 }
 /*コンテンツのp(段落)タグ設定*/
 #contents p {
-	padding: 0px 20px 20px;	/*上、左右、下への余白*/
+	padding: 0px 20px 20px; /*上、左右、下への余白*/
 }
 /*他。微調整。*/
-#contents p + p {
+#contents p+p {
 	margin-top: -5px;
 }
-#contents h2 + p,
-#contents h3 + p {
+
+#contents h2+p, #contents h3+p {
 	margin-top: -10px;
 }
-#contents section + section {
+
+#contents section+section {
 	margin-top: 30px;
 }
 
@@ -124,18 +155,18 @@ header {
 /*各ブロックごとの設定*/
 .list {
 	overflow: hidden;
-	border-bottom: 1px solid #ccc;	/*下線の幅、線種、色*/
-	padding: 20px;	/*ボックス内の余白*/
+	border-bottom: 1px solid #ccc; /*下線の幅、線種、色*/
+	padding: 20px; /*ボックス内の余白*/
 }
 /*h4見出しの設定*/
 .list h4 {
-	color: #d08047;	/*文字色*/
+	color: #d08047; /*文字色*/
 }
 /*画像の設定*/
 .list img {
-	width: 20%;			/*画像幅*/
-	float: left;		/*画像を左に回り込み*/
-	margin-right: 3%	/*画像の右側に空けるスペース*/
+	width: 20%; /*画像幅*/
+	float: left; /*画像を左に回り込み*/
+	margin-right: 3% /*画像の右側に空けるスペース*/
 }
 /*段落タグ*/
 .list p {
@@ -146,13 +177,15 @@ header {
 ---------------------------------------------------------------------------*/
 footer {
 	clear: both;
-	text-align: center;	/*文字をセンタリング*/
-	padding: 30px 0px 10px;	/*上、左右、下へのボックス内の余白*/
+	text-align: center; /*文字をセンタリング*/
+	padding: 30px 0px 10px; /*上、左右、下へのボックス内の余白*/
 }
+
 footer a {
 	text-decoration: none;
 	border: none;
 }
+
 footer .pr {
 	display: block;
 }
@@ -161,12 +194,12 @@ footer .pr {
 ---------------------------------------------------------------------------*/
 /*ブロック全体の設定*/
 #new dl {
-	padding: 0px 20px;	/*上下、左右へのブロック内の余白*/
-	margin-bottom: 20px;	/*ブロックの下(外側)に空ける余白*/
+	padding: 0px 20px; /*上下、左右へのブロック内の余白*/
+	margin-bottom: 20px; /*ブロックの下(外側)に空ける余白*/
 }
 /*日付設定*/
 #new dt {
-	font-weight: bold;	/*太字にする設定。標準がいいならこの行削除。*/
+	font-weight: bold; /*太字にする設定。標準がいいならこの行削除。*/
 	float: left;
 	width: 8em;
 }
@@ -179,18 +212,18 @@ footer .pr {
 ---------------------------------------------------------------------------*/
 /*テーブル１行目に入った見出し部分（※caption）*/
 .ta1 caption {
-	border: 1px solid #999;	/*テーブルの枠線の幅、線種、色*/
-	border-bottom: none;	/*下線だけ消す*/
-	text-align: left;		/*文字を左寄せ*/
-	background: #eee;		/*背景色*/
-	font-weight: bold;		/*太字に*/
-	padding: 10px;			/*ボックス内の余白*/
+	border: 1px solid #999; /*テーブルの枠線の幅、線種、色*/
+	border-bottom: none; /*下線だけ消す*/
+	text-align: left; /*文字を左寄せ*/
+	background: #eee; /*背景色*/
+	font-weight: bold; /*太字に*/
+	padding: 10px; /*ボックス内の余白*/
 }
 /*テーブル１行目に入った見出し部分（※tamidashi）*/
 .ta1 th.tamidashi {
 	width: auto;
-	text-align: left;	/*左よせ*/
-	background: #eee;	/*背景色*/
+	text-align: left; /*左よせ*/
+	background: #eee; /*背景色*/
 }
 /*ta1テーブルブロック設定*/
 .ta1 {
@@ -198,22 +231,23 @@ footer .pr {
 	width: 100%;
 	margin: 0 auto 20px;
 }
+
 .ta1, .ta1 td, .ta1 th {
 	word-break: break-all;
-	border: 1px solid #999;	/*テーブルの枠線の幅、線種、色*/
-	padding: 10px;			/*テーブル内の余白*/
+	border: 1px solid #999; /*テーブルの枠線の幅、線種、色*/
+	padding: 10px; /*テーブル内の余白*/
 }
 /*テーブルの左側ボックス*/
 .ta1 th {
-	text-align: center;	/*センタリング*/
-	width: 30%;			/*幅*/
+	text-align: center; /*センタリング*/
+	width: 30%; /*幅*/
 }
 
 /*トップページのNEWアイコン
 ---------------------------------------------------------------------------*/
 .newicon {
-	background: #F00;	/*背景色*/
-	color: #FFF;		/*文字色*/
+	background: #F00; /*背景色*/
+	color: #FFF; /*文字色*/
 	font-size: 70%;
 	line-height: 1.5;
 	padding: 2px 5px;
@@ -224,61 +258,90 @@ footer .pr {
 
 /*その他
 ---------------------------------------------------------------------------*/
-.look {background: #e5e5e5;padding: 5px 10px;border-radius: 4px;}
-.mb15,.mb1em {margin-bottom: 15px;}
-.color1 {color: #d08047;}
-.pr {font-size: 12px;}
-.wl {width: 96%;}
-.ws {width: 50%;}
-.c {text-align: center;}
-.r {text-align: right;}
-.l {text-align: left;}
+.look {
+	background: #e5e5e5;
+	padding: 5px 10px;
+	border-radius: 4px;
+}
 
+.mb15, .mb1em {
+	margin-bottom: 15px;
+}
 
+.color1 {
+	color: #d08047;
+}
+
+.pr {
+	font-size: 12px;
+}
+
+.wl {
+	width: 96%;
+}
+
+.ws {
+	width: 50%;
+}
+
+.c {
+	text-align: center;
+}
+
+.r {
+	text-align: right;
+}
+
+.l {
+	text-align: left;
+}
 
 /*画面幅580px以下の設定
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media screen and (max-width:580px){
-
-/*全体の設定
----------------------------------------------------------------------------*/
-body {
-	font-size: 12px;	/*文字サイズ*/
-	line-height: 1.5;	/*行間*/
+@media screen and (max-width:580px) {
+	/*全体の設定
+	---------------------------------------------------------------------------*/
+	body {
+		font-size: 12px; /*文字サイズ*/
+		line-height: 1.5; /*行間*/
+	}
 }
 
 /*メニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個あたりの設定*/
 #menubar li {
-	display: block;	/*縦並びにする設定*/
+	display: block; /*縦並びにする設定*/
 	margin-bottom: 10px;
 }
+
 #menubar li a {
 	text-decoration: none;
-	padding: 8px 30px;	/*各メニュー内の余白。*/
+	padding: 8px 30px; /*各メニュー内の余白。*/
 }
 
 /*Galleryページ
 ---------------------------------------------------------------------------*/
 /*各ブロックごとの設定*/
 .list {
-	padding: 10px;	/*ボックス内の余白*/
+	padding: 10px; /*ボックス内の余白*/
 }
 
 /*その他
 ---------------------------------------------------------------------------*/
-.ws,.wl {width: 94%;}
-
+.ws, .wl {
+	width: 94%;
 }
 
+}
 img.manga {
-	width: 300px;	/*画像幅*/
-	border-radius: 40px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+	width: 300px; /*画像幅*/
+	border-radius: 40px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 	margin-left: 20px;
 }
+
 img.yaku {
-	width: 200px;	/*画像幅*/
+	width: 200px; /*画像幅*/
 }
 
 .width50 {
@@ -286,7 +349,7 @@ img.yaku {
 }
 
 img.torokubtn {
-	margin: 0px 0px 0px 50px; 
+	margin: 0px 0px 0px 50px;
 }
 
 img.logobtn {
@@ -304,11 +367,11 @@ img.manual {
 ---------------------------------------------------------------------------*/
 ul.mkj {
 	background: #fffde8;
-	box-shadow: 0px 0px 0px 10px #fffde8;/*線の外側*/
-	border: dashed 2px #ffb03f;/*破線*/
+	box-shadow: 0px 0px 0px 10px #fffde8; /*線の外側*/
+	border: dashed 2px #ffb03f; /*破線*/
 	border-radius: 9px;
-	margin-left: 10px;/*はみ出ないように調整*/
-	margin-right: 10px;/*はみ出ないように調整*/
+	margin-left: 10px; /*はみ出ないように調整*/
+	margin-right: 10px; /*はみ出ないように調整*/
 	padding: 0.5em 0.5em 0.5em 2em;
 	list-style-type: square;
 	width: 50%;
@@ -319,16 +382,20 @@ ul.mkj li, ol.mkj li {
 	padding: 0.5em 0;
 }
 
+ul.mkj li a {
+	text-decoration: none;
+}
+
 h2#mkj {
 	position: relative;
 	clear: both;
 	margin-bottom: -20px;
 	margin-left: 10px;
-	color: #fff;		/*文字色*/
-	padding: 10px 20px;	/*上下、左右への余白*/
+	color: #fff; /*文字色*/
+	padding: 10px 20px; /*上下、左右への余白*/
 	color: #d08047;
-	background: none;	/*背景色*/
-	border-radius: 10px;	/*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+	background: none; /*背景色*/
+	border-radius: 10px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
 	width: 50%;
 	font-size: x-large;
 	font-weight: 900;
@@ -379,7 +446,7 @@ h2#mkj {
 
 /*TOPボタン
 ---------------------------------------------------------------------------*/
-#page_top{
+#page_top {
 	width: 90px;
 	height: 100px;
 	position: fixed;
@@ -389,14 +456,16 @@ h2#mkj {
 	opacity: 0.9;
 	border-radius: 50%;
 }
-#page_top a{
+
+#page_top a {
 	position: relative;
 	display: block;
 	width: 50px;
 	height: 50px;
 	text-decoration: none;
 }
-#page_top a::before{
+
+#page_top a::before {
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 900;
 	font-size: 25px;
@@ -412,7 +481,7 @@ h2#mkj {
 	text-align: center;
 }
 
-#page_top2{
+#page_top2 {
 	width: 90px;
 	height: 100px;
 	position: fixed;
@@ -420,20 +489,19 @@ h2#mkj {
 	bottom: 50px;
 	background-image: url(../img/top2.png);
 	opacity: 0.9;
-	display:none;
+	display: none;
 	border-radius: 50%;
 }
-
 
 /*入力フォーム
 ---------------------------------------------------------------------------*/
 .eqnoreboot {
 	line-height: 1.5;
-	color: #666 !important;	/*全体の文字色*/
+	color: #666 !important; /*全体の文字色*/
 }
 
 .eqnoreboot a {
-	color: #666 !important;	/*リンクテキストの色*/
+	color: #666 !important; /*リンクテキストの色*/
 }
 
 .counter1 {
@@ -445,10 +513,10 @@ h2#mkj {
 }
 
 .countlabel {
-	font-size: 20px;	/*文字サイズ*/
-	color: #505050 !important;/*文字色*/
+	font-size: 20px; /*文字サイズ*/
+	color: #505050 !important; /*文字色*/
 	font-weight: 900;
-} 
+}
 
 .btnspinner {
 	-ms-user-select: none;
@@ -461,10 +529,10 @@ h2#mkj {
 	height: 40px;
 	/* デフォルトのスピナーを消す */
 	-webkit-appearance: none;
-	-moz-appearance:textfield;
+	-moz-appearance: textfield;
 }
 
-.spinner_area input[type="button"]{
+.spinner_area input[type="button"] {
 	cursor: pointer;
 }
 
@@ -472,8 +540,8 @@ h2#mkj {
 .messageInput {
 	width: 80%;
 	display: inline-block;
-	vertical-align: top;	/* 上に合わせる */
-	position: relative; 
+	vertical-align: top; /* 上に合わせる */
+	position: relative;
 	margin: 10px 10px 0 70px;
 	padding: 10px;
 	max-width: 500px;
@@ -486,7 +554,7 @@ h2#mkj {
 	content: "";
 	display: inline-block;
 	position: absolute;
-	top: 3px; 
+	top: 3px;
 	left: -19px;
 	border: 8px solid transparent;
 	border-right: 18px solid #edf1ee;
@@ -504,12 +572,11 @@ h2#mkj {
 .group label {
 	position: absolute;
 	z-index: 2;
-	font-size: 11px;	/*文字サイズ*/
+	font-size: 11px; /*文字サイズ*/
 	border-bottom: solid 2px #80c8d1;
 	line-height: 1.4;
 	margin: 70px 0 0 10px;
 }
-
 
 /*背景*/
 .box {
@@ -545,6 +612,7 @@ h2#mkj {
 	cursor: pointer;
 	transition: all 0.2s ease-out;
 }
+
 .button::after {
 	content: '';
 	display: block;
@@ -559,33 +627,39 @@ h2#mkj {
 	filter: blur(5px);
 	transition: all 0.2s ease-out;
 }
+
 .button:hover::after {
 	opacity: 0.5;
 	filter: blur(20px);
 	transform: translatey(10px) scalex(1.2);
 }
+
 .button:active {
 	background-color: #dd4b4b;
 }
+
 .button:active::after {
 	opacity: 0.3;
 }
 
 .button:focus {
-    /* outline: 1px dotted; */
-    outline: none;
+	/* outline: 1px dotted; */
+	outline: none;
 }
+
 .loading {
 	border-radius: 50px;
 	width: 50px;
 	left: calc(50% - 25px);
 }
+
 .button.loading::after {
 	width: 40px;
 	left: 5px;
 	top: 12px;
 	border-radius: 100%;
 }
+
 .spinner {
 	display: block;
 	width: 34px;
@@ -602,15 +676,97 @@ h2#mkj {
 	border-radius: 100%;
 	animation: spin 0.6s ease-out infinite;
 }
-@keyframes spin {
-	100% {transform: rotate(360deg)}
+
+@keyframes spin { 100% {transform:rotate(360deg);}
 }
 
 /*
 ----メッセージ---*/
-
 .infomessage {
 	position: absolute !important;
 	display: none;
 	bottom: 0;
+}
+
+/*
+--------記事--------*/
+/* TOP */
+.articlueTop {
+	text-align: center;
+	margin-top: -50px;
+	position: relative;
+	z-index: -1;
+}
+
+.mojiImg {
+	position: absolute;
+	height: 20%;
+	top: 10%;
+	left: calc(50% - 25px);
+}
+
+/* 人物紹介 */
+.row {
+	position: relative;
+	padding: 0 0 20px;
+	margin: auto;
+}
+.row_character {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: solid 2px #ffcb8a;
+    border-radius: 3px 0 3px 0;
+}
+
+.row_character>img {
+	width: 200px;
+	height: 150px;
+	-o-object-fit: cover;
+	object-fit: cover;
+	vertical-align: top;
+}
+
+.info_row_character {
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+@media screen and (min-width: 800px) {
+	.wrap_row_character {
+		display: -ms-flex;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	}
+	.row_character {
+		width: calc(100%/ 3);
+		display: -ms-flex;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		margin: 0;
+		border: 0;
+	}
+	.row_character>img {
+		width: 150px;
+		height: 150px;
+		border-radius: 100px;
+		-o-object-fit: cover;
+		object-fit: cover;
+	}
+	
+	.info_row_character {
+		display: inline-block;
+		width: 250px;
+		height: 200px;
+	}
 }
