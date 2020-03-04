@@ -698,6 +698,12 @@ h2#mkj {
 	z-index: -1;
 }
 
+.articlueTop p {
+	position: relative;
+	top: -25px;
+	right: -100px;
+}
+
 .mojiImg {
 	position: absolute;
 	height: 20%;
