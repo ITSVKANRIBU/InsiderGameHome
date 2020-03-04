@@ -701,7 +701,6 @@ h2#mkj {
 .articlueTop p {
 	position: relative;
 	top: -25px;
-	right: -100px;
 }
 
 .mojiImg {
@@ -769,7 +768,7 @@ h2#mkj {
 		-o-object-fit: cover;
 		object-fit: cover;
 	}
-	
+
 	.info_row_character {
 		display: inline-block;
 		width: 250px;
