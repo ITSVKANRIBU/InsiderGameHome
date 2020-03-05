@@ -725,7 +725,7 @@ h2#mkj {
 
 .row_character>img {
 	width: 200px;
-	height: 150px;
+	height: 200px;
 	-o-object-fit: cover;
 	object-fit: cover;
 	vertical-align: top;

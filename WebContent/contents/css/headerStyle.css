@@ -1,0 +1,355 @@
+div.navigation-main {
+	position: relative;
+	z-index: 2;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	padding: 200px 5%;
+	background-color: white;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.7s;
+	-moz-transition: -moz-transform 0.7s;
+	transition: transform 0.7s;
+	-webkit-transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
+	-moz-transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
+	transition-timing-function: cubic-bezier(0.91, 0.01, 0.6, 0.99);
+}
+
+.navigation-is-open div.navigation-main {
+	-webkit-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	-ms-transform: translateX(100%);
+	-o-transform: translateX(100%);
+	transform: translateX(100%);
+}
+
+.navi-trigger {
+	position: fixed;
+	z-index: 3;
+	left: 5%;
+	top: 40px;
+	height: 54px;
+	width: 54px;
+	background-color: peachpuff;
+	border-radius: 50%;
+	overflow: visible;
+	text-indent: 100%;
+	white-space: nowrap;
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.navi-trigger img {
+	position: absolute;
+	left: 0%;
+	top: -70%;
+	z-index: 10;
+	width: 50px;
+}
+
+.navi-trigger .navi-icon {
+	/* Nav icon created in CSS */
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	bottom: auto;
+	right: auto;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	width: 22px;
+	height: 2px;
+	background-color: #FFF;
+}
+
+.navi-trigger .navi-icon::before, .navi-trigger .navi-icon:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #FFF;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.5s, width 0.5s, top 0.3s;
+	-moz-transition: -moz-transform 0.5s, width 0.5s, top 0.3s;
+	transition: transform 0.5s, width 0.5s, top 0.3s;
+}
+
+.navi-trigger .navi-icon::before {
+	-webkit-transform-origin: right top;
+	-moz-transform-origin: right top;
+	-ms-transform-origin: right top;
+	-o-transform-origin: right top;
+	transform-origin: right top;
+	-webkit-transform: translateY(-6px);
+	-moz-transform: translateY(-6px);
+	-ms-transform: translateY(-6px);
+	-o-transform: translateY(-6px);
+	transform: translateY(-6px);
+}
+
+.navi-trigger .navi-icon::after {
+	-webkit-transform-origin: right bottom;
+	-moz-transform-origin: right bottom;
+	-ms-transform-origin: right bottom;
+	-o-transform-origin: right bottom;
+	transform-origin: right bottom;
+	-webkit-transform: translateY(6px);
+	-moz-transform: translateY(6px);
+	-ms-transform: translateY(6px);
+	-o-transform: translateY(6px);
+	transform: translateY(6px);
+}
+
+.no-touch .navi-trigger:hover .navi-icon::after {
+	top: 2px;
+}
+
+.no-touch .navi-trigger:hover .navi-icon::before {
+	top: -2px;
+}
+
+.navi-trigger svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.navigation-is-open .navi-trigger {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.navigation-is-open .navi-trigger .navi-icon::after,
+.navigation-is-open .navi-trigger .navi-icon::before {
+	/* fFrom Hamburger to Arrow */
+	width: 50%;
+	-webkit-transition: -webkit-transform 0.5s, width 0.5s;
+	-moz-transition: -moz-transform 0.5s, width 0.5s;
+	transition: transform 0.5s, width 0.5s;
+}
+
+.navigation-is-open .navi-trigger .navi-icon::before {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.navigation-is-open .navi-trigger .navi-icon::after {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.no-touch .navigation-is-open .navi-trigger:hover .navi-icon::after, .no-touch .navigation-is-open .navi-trigger:hover .navi-icon::before {
+	top: 0;
+}
+
+.navi {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: mistyrose;
+	visibility: hidden;
+	-webkit-transition: visibility 0s 0.7s;
+	-moz-transition: visibility 0s 0.7s;
+	transition: visibility 0s 0.7s;	
+	font-size: 1.6em;
+	margin: 0;
+}
+
+.navi .navigation-wrapper {
+	/* Navigation content */
+	height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	padding: 40px 5% 40px calc(5% + 80px);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	-webkit-transition: -webkit-transform 0.7s;
+	-moz-transition: -moz-transform 0.7s;
+	transition: transform 0.7s;
+	-webkit-transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
+	-moz-transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
+	transition-timing-function: cubic-bezier(0.86, 0.01, 0.77, 0.78);
+}
+
+.navigation-is-open .navi {
+	visibility: visible;
+	-webkit-transition: visibility 0s 0s;
+	-moz-transition: visibility 0s 0s;
+	transition: visibility 0s 0s;
+}
+
+.navigation-is-open .navi .navigation-wrapper {
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	transition: transform 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.82, 0.01, 0.77, 0.78);
+	-moz-transition-timing-function: cubic-bezier(0.82, 0.01, 0.77, 0.78);
+	transition-timing-function: cubic-bezier(0.82, 0.01, 0.77, 0.78);
+}
+
+.half-block > h2 {
+	position: relative;
+	margin-bottom: 1.7em;
+	font-size: 1.3rem;
+	font-weight: 800;
+	color: #2C3E50;
+	text-transform: uppercase;
+}
+
+.half-block > h2::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	height: 1px;
+	width: 50%;
+	background-color: #2C3E50;
+}
+
+.navi .primary-navi {
+	margin-top: 10px;
+}
+
+.navi .primary-navi > li {
+	margin: 1.6em 0;
+}
+
+.navi .primary-navi a {
+	font-family: 'Raleway', sans-serif;
+	font-size: 2.4rem;
+	color: #D7DADB;
+	display: inline-block;
+	text-decoration: none;
+}
+
+ul.primary-navi {
+	list-style: none;
+	padding-left: 0;
+}
+
+.navi .primary-navi a.selected {
+	color: #ffffff;
+}
+
+.no-touch .navi .primary-navi a:hover {
+	color: #ffffff;
+}
+
+.no-js div.navigation-main {
+	overflow: visible;
+}
+
+.no-js .navi {
+	visibility: visible;
+}
+
+.no-js .navi .navigation-wrapper {
+	height: auto;
+	overflow: visible;
+	padding: 100px 5%;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+}
+
+/*
+
+Media Queries Mobile Devices
+
+*/
+@media only screen and (min-width: 786px){
+	div.div.navigation-main {
+		padding: 250px 10%;
+	}
+
+	div.div.navigation-main > h1 {
+		font-size: 2.6em;
+	}
+
+	div.div.navigation-main > p {
+		font-size: 1.6em;
+	}
+}
+
+@media only screen and (min-width: 1170px) {
+	.navi-trigger {
+		top: 40px;
+	}
+	
+	.navi .navigation-wrapper {
+		padding: 62px 20%;
+	}
+	
+	.navi .navigation-wrapper::after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+	
+	.navi .half-block {
+		width: 50%;
+		float: left;
+	}
+	
+	.navi .primary-navi {
+		margin-top: 0;
+	}
+  
+	.navi h2 {
+		font-size: 1.5rem;
+		margin-bottom: 5.6em;
+	}
+  
+	.navi .primary-navi li {
+		margin: 2em 0;
+	}
+  
+	.navi .primary-navi a {
+		font-size: 2.4rem;
+	}
+}
