@@ -14,7 +14,7 @@
 			<nav>
 				<ul class="primary-navi">
 					<li>
-						<a href="../index.html">ほーむ</a>
+						<a href="../index.html">ホーム</a>
 					</li>
 					<li>
 						<a href="https://docs.google.com/forms/d/e/1FAIpQLSf5pH-nC86Lb9L18dx9fBJv1ZUu-qdftS_PBkBRA5imjjFVgA/viewform" target="_blank" >意見募集中</a>
@@ -31,14 +31,14 @@
 <script>
 jQuery(document).ready(function($){
     var isLateralNavAnimating = false;
-    
+
     //open/close lateral navigation
     $('.navi-trigger').on('click', function(event){
         event.preventDefault();
-        //stop if nav animation is running 
+        //stop if nav animation is running
         if( !isLateralNavAnimating ) {
-            if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true; 
-            
+            if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
+
             // 移動させるクラスを指定
             $('.navi').css('background-color','mistyrose');
             $('#container').addClass('navigation-main');

@@ -169,7 +169,7 @@ div.navigation-main {
 
 .navi {
 	position: fixed;
-	z-index: -1;
+	z-index: 0;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -178,7 +178,7 @@ div.navigation-main {
 	visibility: hidden;
 	-webkit-transition: visibility 0s 0.7s;
 	-moz-transition: visibility 0s 0.7s;
-	transition: visibility 0s 0.7s;	
+	transition: visibility 0s 0.7s;
 	font-size: 1.6em;
 	margin: 0;
 }
@@ -320,35 +320,35 @@ Media Queries Mobile Devices
 	.navi-trigger {
 		top: 40px;
 	}
-	
+
 	.navi .navigation-wrapper {
 		padding: 62px 20%;
 	}
-	
+
 	.navi .navigation-wrapper::after {
 		clear: both;
 		content: "";
 		display: table;
 	}
-	
+
 	.navi .half-block {
 		width: 50%;
 		float: left;
 	}
-	
+
 	.navi .primary-navi {
 		margin-top: 0;
 	}
-  
+
 	.navi h2 {
 		font-size: 1.5rem;
 		margin-bottom: 5.6em;
 	}
-  
+
 	.navi .primary-navi li {
 		margin: 2em 0;
 	}
-  
+
 	.navi .primary-navi a {
 		font-size: 2.4rem;
 	}
