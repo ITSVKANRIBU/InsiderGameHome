@@ -40,12 +40,14 @@ jQuery(document).ready(function($){
             if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true; 
             
             // 移動させるクラスを指定
+            $('.navi').css('background-color','mistyrose');
             $('#container').addClass('navigation-main');
             $('body').toggleClass('navigation-is-open');
             $('.navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
                 //animation is over
                 isLateralNavAnimating = false;
                 if(!$('body').hasClass('navigation-is-open')){
+                	$('.navi').css('background-color','white');
             		$('#container').removeClass('navigation-main');
             	}
             });
