@@ -169,7 +169,7 @@ div.navigation-main {
 
 .navi {
 	position: fixed;
-	z-index: 0;
+	z-index: -10;
 	top: 0;
 	left: 0;
 	height: 100%;
