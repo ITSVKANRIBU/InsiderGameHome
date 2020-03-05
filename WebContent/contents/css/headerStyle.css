@@ -167,6 +167,7 @@ div.navigation-main {
 	top: 0;
 }
 
+// zindex重要
 .navi {
 	position: fixed;
 	z-index: 1;
