@@ -17,7 +17,7 @@
 						<a href="../index.html">ほーむ</a>
 					</li>
 					<li>
-						<a href="https://docs.google.com/forms/d/e/1FAIpQLSf5pH-nC86Lb9L18dx9fBJv1ZUu-qdftS_PBkBRA5imjjFVgA/viewform" target="_blank" >ご意見募集中！</a>
+						<a href="https://docs.google.com/forms/d/e/1FAIpQLSf5pH-nC86Lb9L18dx9fBJv1ZUu-qdftS_PBkBRA5imjjFVgA/viewform" target="_blank" >意見募集中</a>
 					</li>
 				</ul>
 			</nav>
@@ -40,11 +40,14 @@ jQuery(document).ready(function($){
             if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true; 
             
             // 移動させるクラスを指定
-            $('#container').toggleClass('navigation-main');
+            $('#container').addClass('navigation-main');
             $('body').toggleClass('navigation-is-open');
             $('.navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
                 //animation is over
                 isLateralNavAnimating = false;
+                if(!$('body').hasClass('navigation-is-open')){
+            	$('#container').removeClass('navigation-main');
+            }
             });
         }
     });
