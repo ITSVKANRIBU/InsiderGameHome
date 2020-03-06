@@ -518,6 +518,10 @@ h2#mkj {
 	font-weight: 900;
 }
 
+input.countlabel:disabled {
+	color: #666 !important; /*全体の文字色*/
+}
+
 .btnspinner {
 	-ms-user-select: none;
 	-moz-user-select: -moz-none;
