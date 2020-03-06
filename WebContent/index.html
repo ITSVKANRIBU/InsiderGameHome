@@ -8,6 +8,7 @@
 		<meta name="description" content="インサイダーゲームのLINEBOTを公開しています。">
 		<meta name="keywords" content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール,LINEBOT,LINE,アプリ">
 		<link rel="stylesheet" href="./contents/css/style.css">
+		<link rel="stylesheet" href="./contents/css/previewStyle.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="./contents/js/main.js"></script>
 		<!--[if lt IE 9]>
@@ -38,10 +39,39 @@
         <div id="container">
 			<header>
 				<script>includeHtml("./contents/include/logo.html");</script>
-				<aside id="mainimg">
-					<img src="./contents/img/mainimg.jpg" alt="">
-				</aside>
 			</header>
+			
+			<!-- imgdivStart -->
+			<div id="indeximgdiv">
+				<script>
+				window.addEventListener('load', function() {
+					document.body.classList.add('loaded');
+				});
+				</script>
+				<div class="absonsive -v1">
+					<h3>
+						<span class="l -l1">イ<span class="kng -k1">ン</span><span class="kng -k2">サイ</span>ダー</span><br>
+						<span class="l -l2">ゲ<span class="kng">ー</span>ム</span><br>
+						<span class="l -l3">ツ<span class="kng">ー</span>ル</span><br>
+						<span class="l -l4">LINE<span class="kng">　B</span>OT</span><br>
+						<span class="l -l5">insidergametool</span>
+					</h3>
+					<div class="pan"><img src="./contents/img/usagiMain.png" alt=""></div>
+					<div class="flower"><img src="./contents/img/flower.svg" alt=""></div>
+					<ul class="rain">
+						<div class="drop -s"><img src="./contents/img/raindrop_s.svg" alt=""></div>
+						<div class="drop -s"><img src="./contents/img/raindrop_s.svg" alt=""></div>
+						<div class="drop -m"><img src="./contents/img/raindrop_m.svg" alt=""></div>
+						<div class="drop -l"><img src="./contents/img/raindrop_l.svg" alt=""></div>
+						<div class="drop -l"><img src="./contents/img/raindrop_l.svg" alt=""></div>
+						<div class="drop -m"><img src="./contents/img/raindrop_m.svg" alt=""></div>
+						<div class="drop -s"><img src="./contents/img/raindrop_s.svg" alt=""></div>
+						<div class="drop -m"><img src="./contents/img/raindrop_m.svg" alt=""></div>
+					</ul>
+				</div>
+			</div>
+			<!-- imgdivEnd -->
+			
 			<script>includeHtml("./contents/include/menubar.html");</script>
 			<div id="contents">
 			<section id="new">
