@@ -1,7 +1,6 @@
 div.navigation-main {
 	position: relative;
 	z-index: 2;
-	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 	padding: 200px 5%;
 	background-color: white;
@@ -167,10 +166,9 @@ div.navigation-main {
 	top: 0;
 }
 
-// zindex重要
 .navi {
 	position: fixed;
-	z-index: 2;
+	z-index: 0;
 	top: 0;
 	left: 0;
 	height: 100%;
