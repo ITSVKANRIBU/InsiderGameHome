@@ -43,18 +43,15 @@ jQuery(document).ready(function($){
             $('#navi').css('opacity',1);
             
             $('body').toggleClass('navigation-is-open');
-            var openFlg = false;
-            if($('body').hasClass('navigation-is-open')){
-            	openFlg = true;
-            }
-            if(!openFlg){
+            
+            if(!$('body').hasClass('navigation-is-open')){
 				$('#navi').animate({opacity: 0}, 650);
             }
             
             $('.navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
                 //animation is over
                 isLateralNavAnimating = false;
-                if(!openFlg){
+                if(!$('body').hasClass('navigation-is-open')){
             		$('#container').removeClass('navigation-main');
             	}
             });
