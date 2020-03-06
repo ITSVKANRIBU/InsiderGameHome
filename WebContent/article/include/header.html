@@ -38,14 +38,23 @@ jQuery(document).ready(function($){
         //stop if nav animation is running
         if( !isLateralNavAnimating ) {
             if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
-
             // 移動させるクラスを指定
             $('#container').addClass('navigation-main');
+            $('#navi').css('opacity',1);
+            
             $('body').toggleClass('navigation-is-open');
+            var openFlg = false;
+            if($('body').hasClass('navigation-is-open')){
+            	openFlg = true;
+            }
+            if(!openFlg){
+				$('#navi').animate({opacity: 0}, 650);
+            }
+            
             $('.navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
                 //animation is over
                 isLateralNavAnimating = false;
-                if(!$('body').hasClass('navigation-is-open')){
+                if(!openFlg){
             		$('#container').removeClass('navigation-main');
             	}
             });
