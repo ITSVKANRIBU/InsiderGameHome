@@ -21,6 +21,12 @@
 	height: 100%;
 	background: url(../img/mainimg.jpg) center / cover no-repeat;
 }
+
+/* yozora */
+#indeximgdiv .yozora::after {
+	background: url(../img/yozora.jpg) center / cover no-repeat!important;
+}
+
 @media screen and (max-width: 1200px) {
 	#indeximgdiv .absonsive {
 		height: calc(500 / 1200 * 100vw);
