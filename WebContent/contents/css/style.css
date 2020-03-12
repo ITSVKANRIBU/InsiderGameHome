@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap');
+
 /*PC・タブレット・スマホ(全端末)共通設定
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -724,7 +726,7 @@ input.countlabel:disabled {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border: solid 2px #ffcb8a;
-    border-radius: 3px 0 3px 0;
+	border-radius: 3px 0 3px 0;
 }
 
 .row_character>img {
@@ -736,9 +738,9 @@ input.countlabel:disabled {
 }
 
 .info_row_character {
-    display: inline-block;
-    width: auto;
-    height: auto;
+	display: inline-block;
+	width: auto;
+	height: auto;
 }
 
 @media screen and (min-width: 800px) {
@@ -778,4 +780,104 @@ input.countlabel:disabled {
 		width: 250px;
 		height: 200px;
 	}
+}
+
+
+/* 記事 */
+.sng-box p {
+	margin: 0;
+	padding: 0;
+}
+.sng-box .say {
+	margin-bottom: 0;
+}
+.sng-box .faceicon {
+	padding-right: 20px;
+}
+.box-title {
+	font-weight: bold;
+}
+
+.box8 {
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
+
+.box26,
+.box27 {
+	margin: 2em 0;
+	border: solid 3px #95ccff;
+	border-radius: 8px;
+}
+.box26 .box-title,
+.box27 .box-title {
+	display: inline-block;
+	position: relative;
+	top: -14px;
+	left: 10px;
+	padding: 0 9px;
+	margin: 0 7px;
+	background: #fff;
+	color: #95ccff;
+	font-size: 19px;
+	line-height: 1.4;
+}
+.box26 .box-content,
+.box27 .box-content {
+	padding: 0 1.5em 24px;
+}
+.box27 {
+	border: solid 3px #ed8583;
+}
+.box27 .box-title {
+	color: #ed8583;
+}
+
+.sng-box ul, .sng-box ol {
+	margin: 5px 0;
+	padding: 0 0 0 1.4em;
+	border: none;
+	box-shadow: none;
+	background: transparent;
+	list-style-type: disc;
+}
+.w-500px{
+	max-width: 500px;
+}
+
+
+/* 文字装飾 */
+
+.keiko_yellow {
+	background: linear-gradient(transparent 50%, rgba(255, 252, 107, 0.69) 50%);
+}
+
+.fontShadows {
+	font-family: 'Shadows Into Light', cursive;
+	letter-spacing: 0.1em!important;
+}
+
+.animationFadeIn{
+	visibility: hidden;
+}
+
+.fadeInDown {
+	-webkit-animation-fill-mode:both;
+	-ms-animation-fill-mode:both;
+	animation-fill-mode:both;
+	-webkit-animation-duration:1s;
+	-ms-animation-duration:1s;
+	animation-duration:1s;
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+	visibility: visible !important;
+}
+@-webkit-keyframes fadeInDown {
+	0% { opacity: 0; -webkit-transform: translateY(-20px); }
+	100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@keyframes fadeInDown {
+	0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+	100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
 }

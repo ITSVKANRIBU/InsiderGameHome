@@ -182,6 +182,16 @@ $(function() {
 		$('.userdiv').eq(num).remove();
 	}
 	
+	$(window).scroll(function(){
+		var windowHeight = $(window).height(),
+		topWindow = $(window).scrollTop();
+		$('.animationFadeIn').each(function(){
+			var targetPosition = $(this).offset().top;
+			if(topWindow > targetPosition - windowHeight + 100){
+				$(this).addClass("fadeInDown");
+			}
+		});
+	});
 });
 
 

@@ -1,4 +1,8 @@
 @charset "utf-8";
+#indeximgdiv {
+	margin-bottom: 20px;
+}
+
 #indeximgdiv img {
 	max-width: 100%;
 	vertical-align: middle;

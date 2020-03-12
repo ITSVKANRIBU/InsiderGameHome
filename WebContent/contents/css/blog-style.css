@@ -145,13 +145,16 @@
 			line-height: 1.7; } }
 		.blog-wrapper .single-blog-area .hover-content > a {
 		display: block;
-		font-size: 12px;
+		font-size: 17px;
 		font-weight: 600;
 		margin-bottom: 0;
 		color: #0315ff;
 		letter-spacing: 1.5px;
 		text-transform: uppercase;
-		margin-top: 50px; }
+		margin-top: 50px; 
+		text-decoration: none;
+		text-align: center;
+		}
 		@media only screen and (min-width: 992px) and (max-width: 1199px) {
 			.blog-wrapper .single-blog-area .hover-content > a {
 			margin-top: 15px; } }
