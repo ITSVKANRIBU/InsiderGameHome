@@ -136,12 +136,16 @@ header {
 /*コンテンツのh3タグの設定*/
 #contents h3 {
 	clear: both;
-	margin-bottom: 20px;
-	padding: 8px 20px; /*上下、左右への余白*/
 	background: #fff; /*背景色*/
-	border: 1px solid #ccc; /*枠線の幅、線種、色*/
+	border-bottom: 1px solid #3097ff; /*枠線の幅、線種、色*/
 	border-radius: 10px; /*角を丸くする指定。この１行を削除すれば角丸がなくなります。*/
+    margin: 1.0em 3em 2.0em 0.0em;
+    padding: 10px 0 10px 10px;
+    border-left: 4px solid #3097ff;
+    font-size: 1.3em;
+    line-height: 1.5;
 }
+
 /*コンテンツのp(段落)タグ設定*/
 #contents p {
 	padding: 0px 20px 20px; /*上、左右、下への余白*/
@@ -313,6 +317,10 @@ footer .pr {
 	body {
 		font-size: 12px; /*文字サイズ*/
 		line-height: 1.5; /*行間*/
+	}
+	
+	#contents h3 {
+		font-size: 13.5px; /*文字サイズ*/
 	}
 
 
