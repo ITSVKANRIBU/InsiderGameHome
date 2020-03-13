@@ -100,16 +100,16 @@
 		-webkit-transition-duration: 500ms;
 		transition-duration: 500ms;
 		background-color: #ffffff;
-		background-color: #ffffff;
 		padding: 20px 40px;
 		position: absolute;
 		width: 60%;
 		max-height: 100%;
 		bottom: 0;
 		z-index: 100;
-		left: 0;
+		left: -100%;
 		opacity: 0;
-		visibility: hidden; }
+		visibility: hidden; 
+		}
 		@media only screen and (max-width: 767px) {
 		.blog-wrapper .single-blog-area .hover-content {
 			padding: 20px; } }
@@ -163,7 +163,9 @@
 			margin-top: 30px; } }
 	.blog-wrapper .single-blog-area:hover .hover-content, .blog-wrapper .single-blog-area:focus .hover-content {
 		opacity: 1;
-		visibility: visible; }
+		visibility: visible; 
+		left: 0;
+		}
 	.blog-wrapper .single-blog-area:hover img, .blog-wrapper .single-blog-area:focus img {
 		-webkit-transform: scale(1.1);
 		transform: scale(1.1); }
