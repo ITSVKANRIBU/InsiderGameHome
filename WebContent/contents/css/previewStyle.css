@@ -37,6 +37,10 @@
 	}
 }
 
+.defoltfont {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
 /* copy */
 #indeximgdiv .absonsive h3 {
 	position: absolute;
@@ -44,7 +48,7 @@
 	left: 109px;
 	margin: 0;
 	color: white;
-	font-family: "emikofont";
+	font-family: "emikofont","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	white-space: nowrap;
 }
 #indeximgdiv .absonsive h3 .l {
