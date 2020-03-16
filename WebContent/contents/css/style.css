@@ -862,6 +862,14 @@ input.countlabel:disabled {
 }
 
 
+.blackboard-box{
+  margin: 1em 0;
+  padding: 1em;
+  border: 8px solid #a60;
+  box-shadow: 2px 2px 4px #999, 2px 2px 2px #020 inset;
+}
+
+
 /* 文字装飾 */
 
 .keiko_yellow {
