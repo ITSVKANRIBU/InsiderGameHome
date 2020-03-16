@@ -896,3 +896,75 @@ input.countlabel:disabled {
 	0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
 	100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
 }
+
+/*
+--------READMORE--------*/
+.readmore{
+    position: relative;
+    box-sizing: border-box;
+}
+
+.readmore-content{
+    position: relative;
+    overflow: hidden;
+    /*以下お好み*/
+    /*高さの初期値*/
+    transition-property: height;
+  	transition-duration: 2s;
+    height: 250px;
+}
+.readmore-content::before {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: "";
+    /*以下お好み グラデーションの色と高さ 高さはreadmoreのheight以下にすること*/
+    height: 50px;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.8) 50%, #fff 100%);
+}
+
+/* 続きを読むボタン */
+.readmore-label{
+    display: table;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    margin: 0 auto;
+    z-index: 2;
+    padding: 0 10px;
+    background-color: #ffceca;
+    border-radius: 10px;
+    color: #FFF;
+}
+.readmore-label:before{
+    content: 'つづき';
+    font-family: 'emikofont';
+}
+
+.readmore-check{
+    display: none;
+}
+/*チェック時にボタンを非表示*/
+.readmore-check:checked ~ .readmore-label{
+    position: static;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    /* 「続きを読む」を押した後、元に戻す必要がない場合は、上のオプションを消してこの1行だけにする */
+    /* display: none; */
+}
+.readmore-check:checked ~ .readmore-label:before{
+    content: 'とじる';
+}
+/*チェック時に高さを自動に戻す*/
+.readmore-check:checked ~ .readmore-content{
+    height: auto;
+}
+/*チェック時グラデーション等を削除*/
+.readmore-check:checked ~ .readmore-content::before {
+    display: none;
+}
