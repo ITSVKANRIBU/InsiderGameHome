@@ -1,7 +1,7 @@
 /* [Master Stylesheet v-1.0.0] */
 /* :: 1.0 Import Web Fonts */
 .blog-wrapper-container {
-	width: 90%;
+	width: 70%;
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -49,7 +49,7 @@
 	position: relative;
 	z-index: 1; }
 	.blog-wrapper .single-blog-area {
-	padding: 7% 7% 0 7%; 	/* è„ | âE | â∫ | ç∂ */
+	padding: 7% 7% 7% 7%; 	/* è„ | âE | â∫ | ç∂ */
 	position: relative;
 	z-index: 1;
 	-webkit-transition-duration: 500ms;
@@ -74,7 +74,7 @@
 		@media only screen and (max-width: 767px) {
 		.blog-wrapper .single-blog-area .post-title {
 			padding: 20px; } }
-		.blog-wrapper .single-blog-area .post-title p {
+		.blog-wrapper .single-blog-area .post-title a {
 		text-decoration: none;
 		color: black;
 		display: block;
@@ -82,10 +82,10 @@
 		font-weight: 600;
 		line-height: 1.5; }
 		@media only screen and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title p {
+			.blog-wrapper .single-blog-area .post-title a {
 			font-size: 14px; } }
 		@media only screen and (min-width: 576px) and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title p {
+			.blog-wrapper .single-blog-area .post-title a {
 			font-size: 18px; } }
 	span.dateblog:before {
 		content: '';
