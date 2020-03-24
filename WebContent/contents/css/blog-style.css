@@ -57,7 +57,7 @@
 	overflow: hidden; }
 	.blog-wrapper .single-blog-area img {
 		box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
-		width: 100%;
+		width: 90%;
 		-webkit-transition-duration: 500ms;
 		transition-duration: 500ms; }
 	.blog-wrapper .single-blog-area .post-title {
