@@ -76,7 +76,7 @@ a:hover {
 #container {
 	max-width: 1400px; /*ブロックの最大幅*/
 	margin: 0 auto;
-	padding: 0 3%;
+	padding: 0 10%;
 }
 
 /*ヘッダー（ロゴが入った最上段のブロック）
@@ -319,6 +319,10 @@ footer .pr {
 		line-height: 1.5; /*行間*/
 	}
 	
+	#container {
+		padding: 0 3%;
+	}
+	
 	#contents h3 {
 		font-size: 13.5px; /*文字サイズ*/
 	}
@@ -536,7 +540,8 @@ h2#mkj {
 }
 
 input.countlabel:disabled {
-	color: #666 !important; /*全体の文字色*/
+	-webkit-appearance: none;
+	color: #505050 !important; /*全体の文字色*/
 }
 
 .btnspinner {
@@ -918,7 +923,7 @@ input.countlabel:disabled {
     /*以下お好み*/
     /*高さの初期値*/
     transition-property: height;
-  	transition-duration: 2s;
+  	transition-duration: 0.5s;
     height: 250px;
 }
 .readmore-content::before {
@@ -970,7 +975,7 @@ input.countlabel:disabled {
 }
 /*チェック時に高さを自動に戻す*/
 .readmore-check:checked ~ .readmore-content{
-    height: auto;
+    height: 400px;
 }
 /*チェック時グラデーション等を削除*/
 .readmore-check:checked ~ .readmore-content::before {
@@ -979,9 +984,11 @@ input.countlabel:disabled {
 /*
 -----SCROLL-----------*/
 .scrollArea{
+	-webkit-appearance;
 	height: 500px;
 	overflow: auto;
 	padding-right: 20px;
+	width:90%;
 }
 /*スクロールバーの横幅指定*/
 .scrollArea.deco::-webkit-scrollbar {

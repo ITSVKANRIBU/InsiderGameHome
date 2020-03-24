@@ -1,7 +1,7 @@
 /* [Master Stylesheet v-1.0.0] */
 /* :: 1.0 Import Web Fonts */
 .blog-wrapper-container {
-	width: 80%;
+	width: 90%;
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -68,24 +68,23 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 60%;
+		width: 80%;
 		height: auto;
 		z-index: 10; }
 		@media only screen and (max-width: 767px) {
 		.blog-wrapper .single-blog-area .post-title {
 			padding: 20px; } }
-		.blog-wrapper .single-blog-area .post-title a {
-		text-decoration: none;
+		.blog-wrapper .single-blog-area .post-title p {
 		color: black;
 		display: block;
 		font-size: 18px;
 		font-weight: 600;
 		line-height: 1.5; }
 		@media only screen and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title a {
+			.blog-wrapper .single-blog-area .post-title p {
 			font-size: 14px; } }
 		@media only screen and (min-width: 576px) and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title a {
+			.blog-wrapper .single-blog-area .post-title p {
 			font-size: 18px; } }
 	span.dateblog:before {
 		content: '';
