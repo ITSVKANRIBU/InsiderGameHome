@@ -74,17 +74,18 @@
 		@media only screen and (max-width: 767px) {
 		.blog-wrapper .single-blog-area .post-title {
 			padding: 20px; } }
-		.blog-wrapper .single-blog-area .post-title p {
+		.blog-wrapper .single-blog-area .post-title a {
+		text-decoration: none;
 		color: black;
 		display: block;
 		font-size: 18px;
 		font-weight: 600;
 		line-height: 1.5; }
 		@media only screen and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title p {
+			.blog-wrapper .single-blog-area .post-title a {
 			font-size: 14px; } }
 		@media only screen and (min-width: 576px) and (max-width: 767px) {
-			.blog-wrapper .single-blog-area .post-title p {
+			.blog-wrapper .single-blog-area .post-title a {
 			font-size: 18px; } }
 	span.dateblog:before {
 		content: '';
