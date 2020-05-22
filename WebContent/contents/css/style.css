@@ -988,7 +988,7 @@ input.countlabel:disabled {
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 @media screen and (min-width:900px) {
 	.scrollArea{
-		-webkit-appearance;
+		/*-webkit-appearance;*/
 		height: 500px;
 		overflow: auto;
 		padding-right: 20px;
@@ -1009,4 +1009,91 @@ input.countlabel:disabled {
 		background:#09C9D9;
 	}
 
+}
+
+
+/*パワポカラオケ
+------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* カウンター */
+.counterspan {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #01070e;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+/* パワポのところ */
+.imageView {
+	width: 100%;
+	height: calc(75vw * 0.70);
+	max-height: 500px;
+	background-color: #fff;
+}
+
+.linehome {
+	line-height: calc(50vw * 0.70);
+}
+
+.linehome h1 {
+	display:inline-block;
+	width: 100%;
+	vertical-align: middle;
+	line-height:normal;
+}
+
+
+blockquote p {
+    padding: 0;
+    margin: 7px 0;
+    line-height: 1.7;
+}
+
+.fadeInAnime {
+	-webkit-animation-fill-mode:both;
+	-ms-animation-fill-mode:both;
+	animation-fill-mode:both;
+	-webkit-animation-duration:1s;
+	-ms-animation-duration:1s;
+	animation-duration:1s;
+	-webkit-animation-name: fadeInAnime;
+	animation-name: fadeInAnime;
+	visibility: visible !important;
+}
+@-webkit-keyframes fadeInAnime {
+	0% { opacity: 0; -webkit-transform: translateX(-30px); }
+	100% { opacity: 1; -webkit-transform: translateX(0); }
+}
+@keyframes fadeInAnime {
+	0% { opacity: 0; -webkit-transform: translateX(-30px); -ms-transform: translateX(-30px); transform: translateX(-30px); }
+	100% { opacity: 1; -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); }
+}
+
+@-webkit-keyframes fadeInAnimeright {
+	0% { opacity: 0; -webkit-transform: translateX(+30px); }
+	100% { opacity: 1; -webkit-transform: translateX(0); }
+}
+@keyframes fadeInAnimeright {
+	0% { opacity: 0; -webkit-transform: translateX(+30px); -ms-transform: translateX(+30px); transform: translateX(+30px); }
+	100% { opacity: 1; -webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0); }
+}
+
+@media (max-width: 991.98px) {
+ .bigmoji {
+   font-size: 1.6rem;
+ }
+}
+@media (max-width: 767.98px) {
+ .bigmoji {
+   font-size: 1.3rem;
+ }
+}
+@media (max-width: 575.98px) {
+ .bigmoji {
+   font-size: 1.0rem;
+ }
 }
