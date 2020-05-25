@@ -1036,7 +1036,8 @@ input.countlabel:disabled {
 }
 
 .linehome {
-	line-height: calc(50vw * 0.70);
+	line-height: min(500px, calc(50vw * 0.70));
+
 }
 
 .linehome h1 {
