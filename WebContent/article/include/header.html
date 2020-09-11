@@ -1,7 +1,7 @@
 <!--ヘッダー用CSS読み込み-->
-<link rel="stylesheet" href="../contents/css/headerStyle.css">
+<link rel="stylesheet" href="../contents/css/headerStyle.css" />
 <a href="#navi" class="navi-trigger">
-	<img src="../contents/img/navi_panda.png">
+	<img src="../contents/img/navi_panda.png" />
 	<span class="navi-icon">
 		<svg x="0px" y="0px" width="54px" height="54px" viewBox="0 0 54 54"></svg>
 	</span>
@@ -17,7 +17,11 @@
 						<a href="../index.html">ホーム</a>
 					</li>
 					<li>
-						<a href="https://docs.google.com/forms/d/e/1FAIpQLSf5pH-nC86Lb9L18dx9fBJv1ZUu-qdftS_PBkBRA5imjjFVgA/viewform" target="_blank" >意見募集中</a>
+						<a
+							href="https://docs.google.com/forms/d/e/1FAIpQLSf5pH-nC86Lb9L18dx9fBJv1ZUu-qdftS_PBkBRA5imjjFVgA/viewform"
+							target="_blank"
+							>意見募集中</a
+						>
 					</li>
 				</ul>
 			</nav>
@@ -29,33 +33,37 @@
 	</div>
 -->
 <script>
-jQuery(document).ready(function($){
-    var isLateralNavAnimating = false;
+	jQuery(document).ready(function ($) {
+		var isLateralNavAnimating = false;
 
-    //open/close lateral navigation
-    $('.navi-trigger').on('click', function(event){
-        event.preventDefault();
-        //stop if nav animation is running
-        if( !isLateralNavAnimating ) {
-            if($(this).parents('.csstransitions').length > 0 ) isLateralNavAnimating = true;
-            // 移動させるクラスを指定
-            $('#container').addClass('navigation-main');
-            $('#navi').css('opacity',1);
-            
-            $('body').toggleClass('navigation-is-open');
-            
-            if(!$('body').hasClass('navigation-is-open')){
-				$('#navi').animate({opacity: 0}, 650);
-            }
-            
-            $('.navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-                //animation is over
-                isLateralNavAnimating = false;
-                if(!$('body').hasClass('navigation-is-open')){
-            		$('#container').removeClass('navigation-main');
-            	}
-            });
-        }
-    });
-});
+		//open/close lateral navigation
+		$(".navi-trigger").on("click", function (event) {
+			event.preventDefault();
+			//stop if nav animation is running
+			if (!isLateralNavAnimating) {
+				if ($(this).parents(".csstransitions").length > 0)
+					isLateralNavAnimating = true;
+				// 移動させるクラスを指定
+				$("#container").addClass("navigation-main");
+				$("#navi").css("opacity", 1);
+
+				$("body").toggleClass("navigation-is-open");
+
+				if (!$("body").hasClass("navigation-is-open")) {
+					$("#navi").animate({ opacity: 0 }, 650);
+				}
+
+				$(".navigation-wrapper").one(
+					"webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+					function () {
+						//animation is over
+						isLateralNavAnimating = false;
+						if (!$("body").hasClass("navigation-is-open")) {
+							$("#container").removeClass("navigation-main");
+						}
+					}
+				);
+			}
+		});
+	});
 </script>
