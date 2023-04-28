@@ -26,16 +26,14 @@ function updateScrollbar() {
 
 function setDate() {
   d = new Date();
-  if (m != d.getMinutes()) {
-    m = d.getMinutes();
-    $(
-      '<div class="timestamp">' +
-        zeroPadding(d.getHours(), 2) +
-        ":" +
-        zeroPadding(m, 2) +
-        "</div>"
-    ).appendTo($(".message:last"));
-  }
+  m = d.getMinutes();
+  $(
+    '<div class="timestamp">' +
+      zeroPadding(d.getHours(), 2) +
+      ":" +
+      zeroPadding(m, 2) +
+      "</div>"
+  ).appendTo($(".message:last"));
 }
 
 function zeroPadding(num, len) {
@@ -52,48 +50,6 @@ $(window).on("keydown", function (e) {
     return false;
   }
 });
-
-var Fake = [
-  "Hi there, I'm Fabio and you?",
-  "Nice to meet you",
-  "How are you?",
-  "Not too bad, thanks",
-  "What do you do?",
-  "That's awesome",
-  "Codepen is a nice place to stay",
-  "I think you're a nice person",
-  "Why do you think that?",
-  "Can you explain?",
-  "Anyway I've gotta go now",
-  "It was a pleasure chat with you",
-  "Time to make a new codepen",
-  "Bye",
-  ":)",
-];
-
-function fakeMessage() {
-  if ($(".message-input").val() != "") {
-    return false;
-  }
-  $(
-    '<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>'
-  ).appendTo($(".mCSB_container"));
-  updateScrollbar();
-
-  setTimeout(function () {
-    $(".message.loading").remove();
-    $(
-      '<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' +
-        Fake[i] +
-        "</div>"
-    )
-      .appendTo($(".mCSB_container"))
-      .addClass("new");
-    setDate();
-    updateScrollbar();
-    i++;
-  }, 1000 + Math.random() * 20 * 100);
-}
 
 // 以下UOC
 
@@ -125,21 +81,21 @@ const putMessage = (message) => {
 };
 
 const putImg = (imgUrl) => {
-  const imgdom = `<img src="${imgUrl}" class="thumbnailI" alt="役職画像" />`;
-  $(
-    '<div class="message new"><figure class="avatar"><img src="./contents/img/icon.png" /></figure>' +
-      imgdom +
-      "</div>"
-  )
-    .appendTo($(".mCSB_container"))
-    .addClass("new");
-  setDate();
-
-  // 画像の読み込みを待つ
-  setTimeout(function () {
+  const img = new Image();
+  img.src = imgUrl;
+  img.onload = () => {
+    const imgdom = `<img src="${imgUrl}" class="thumbnailI" alt="役職画像" />`;
+    $(
+      '<div class="message new"><figure class="avatar"><img src="./contents/img/icon.png" /></figure>' +
+        imgdom +
+        "</div>"
+    )
+      .appendTo($(".mCSB_container"))
+      .addClass("new");
+    setDate();
     updateScrollbar();
-  }, 1000);
-  i++;
+    i++;
+  };
 };
 
 const insertMessage = async () => {
@@ -183,7 +139,6 @@ const getText = (data) => {
     case "text":
       return firstMessage.text;
     case "template":
-      console.log(data);
       return firstMessage.template.text;
   }
 };
