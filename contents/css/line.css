@@ -241,11 +241,12 @@ Message Box
   outline: none !important;
   resize: none;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 11px;
+  font-size: 16px;
   height: 17px;
   margin: 0;
   padding-right: 20px;
   width: 265px;
+  overflow: hidden;
 }
 .message-box textarea:focus:-webkit-placeholder {
   color: transparent;
