@@ -118,8 +118,8 @@ const insertMessage = async () => {
 };
 
 const callApi = async (message) => {
-  //const url = new URL("https://insidergamehelper.herokuapp.com/callapi");
-  const url = new URL("http://localhost:8080/callapi");
+  const url = new URL("https://insidergamehelper.herokuapp.com/callapi");
+  //const url = new URL("http://localhost:8080/callapi");
   url.searchParams.append("userId", userId);
   url.searchParams.append("message", message);
   try {
