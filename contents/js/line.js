@@ -1,7 +1,7 @@
 const FIRST_MESSAGE = "こんにちは！ 参加したい村の番号を入力してください。";
 let userId;
 
-var $messages = $(".messages-content"),
+let $messages = $(".messages-content"),
   d,
   h,
   m,
@@ -44,7 +44,7 @@ $(".message-submit").click(function () {
   insertMessage();
 });
 
-$(window).on("keydown", function (e) {
+$(window).on("keydown", { passive: true }, function (e) {
   if (e.which == 13) {
     insertMessage();
     return false;
@@ -52,7 +52,6 @@ $(window).on("keydown", function (e) {
 });
 
 // 以下UOC
-
 const setUserId = () => {
   // coolieの取得
   userId = Cookies.get("userId");
@@ -119,7 +118,8 @@ const insertMessage = async () => {
 };
 
 const callApi = async (message) => {
-  const url = new URL("https://insidergamehelper.herokuapp.com/callapi");
+  //const url = new URL("https://insidergamehelper.herokuapp.com/callapi");
+  const url = new URL("http://localhost:8080/callapi");
   url.searchParams.append("userId", userId);
   url.searchParams.append("message", message);
   try {
