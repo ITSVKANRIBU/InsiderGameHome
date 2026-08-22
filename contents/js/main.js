@@ -26,7 +26,6 @@ function submitAction() {
   var messageList = [];
 
   $.each($('[name="message"]'), function (index, dao) {
-    messageList.length = [index + 1];
     messageList[index] = dao.value;
   });
 
@@ -179,7 +178,6 @@ $(function () {
   }
 
   function removeDiv() {
-    var size = $(".userdiv").length;
     $(".userdiv").eq(num).remove();
   }
 
