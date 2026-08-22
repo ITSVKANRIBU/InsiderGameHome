@@ -3,10 +3,10 @@ import {
   clampParticipantCount,
   participantLabel,
 } from "../form-logic";
+import { API_BASE } from "../config";
 import { initCommonPage } from "./common";
 
-const SPECIAL_VILLAGE_URL =
-  "https://insidergamehelper.herokuapp.com/specialvillage";
+const SPECIAL_VILLAGE_URL = `${API_BASE}/specialvillage`;
 
 function setAlertVisibility(element: HTMLElement | null, visible: boolean): void {
   if (element) {
