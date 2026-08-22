@@ -21,6 +21,9 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "engines": {
+    "node": "^22.22.2 || >=24.15.0"
+  },
   "bugs": {
     "url": "https://github.com/ITSVKANRIBU/InsiderGameHome/issues"
   },
