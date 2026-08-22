@@ -4,7 +4,6 @@
     prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
   >
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>インサイダーゲームツール</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -16,16 +15,7 @@
       content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール"
     />
     <link rel="stylesheet" href="./contents/css/style.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./contents/js/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type="module" src="/src/pages/common.ts"></script>
     <link
       rel="icon"
       type="image/vnd.microsoft.icon"
@@ -48,13 +38,9 @@
   <body>
     <div id="container">
       <header>
-        <script>
-          includeHtml("./contents/include/logo.html");
-        </script>
+        {{> logo}}
       </header>
-      <script>
-        includeHtml("./contents/include/menubar.html");
-      </script>
+      {{> menubar}}
       <div id="contents">
         <section>
           <h2 id="mkj">目次</h2>
@@ -168,13 +154,6 @@
             src="./contents/img/03_god.png"
             alt="マニュアル"
           />
-          <!--<br><br>
-					<h3>※１　お題の自動取得</h3>
-					<img class="manual" src="./contents/img/01_option.png" alt="マニュアル">
-					<br><br>
-					<h3>※１　確認（およびお題の投稿）</h3>
-					<img class="manual" src="./contents/img/02_option2.png" alt="マニュアル">
-					-->
         </section>
 
         <section>
@@ -278,19 +257,10 @@
             src="./contents/img/08_haifu.png"
             alt="マニュアル"
           />
-          <!-- <h3>さらなるお題の投稿</h3>
-          <a href="https://insidergamehelper.herokuapp.com/Insider"
-            ><img
-              class="torokubtn"
-              src="./contents/img/go.png"
-              alt="投稿サイト"
-          /></a> -->
         </section>
       </div>
       <!--/contents-->
-      <script>
-        includeHtml("./contents/include/footer.html");
-      </script>
+      {{> footer}}
       <div id="page_top"><a href="#"></a></div>
       <div id="page_top2"></div>
     </div>

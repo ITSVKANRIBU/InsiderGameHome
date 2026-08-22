@@ -11,8 +11,8 @@
 
 | メソッド               | パス              | 用途                                 | 利用ページ                           |
 | ---------------------- | ----------------- | ------------------------------------ | ------------------------------------ |
-| GET                    | `/callapi`        | チャット操作（村の作成・参加・設定） | `line.html`（`contents/js/line.js`） |
-| POST（全メソッド受付） | `/specialvillage` | 特殊村の作成                         | `form.html`（`contents/js/main.js`） |
+| GET                    | `/callapi`        | チャット操作（村の作成・参加・設定） | `line.html`（`src/pages/line.ts`） |
+| POST（全メソッド受付） | `/specialvillage` | 特殊村の作成                         | `form.html`（`src/pages/form.ts`） |
 
 このほかに `POST /callback`（LINE Messaging API の Webhook）が存在するが、LINE プラットフォーム専用（署名検証あり）でありサイトからは利用しない。
 
@@ -74,7 +74,7 @@ HTTP 200。メッセージオブジェクトの JSON 配列。要素の `type` �
 ]
 ```
 
-サイト側（`line.js`）が参照するのは以下のフィールドのみ。
+サイト側（`src/chat/logic.ts`）が参照するのは以下のフィールドのみ。
 
 - `data[0].type`（`"text"` / `"template"`）
 - `data[0].text`（text 型の本文）

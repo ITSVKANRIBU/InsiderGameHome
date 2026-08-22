@@ -4,7 +4,6 @@
 		prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
 	>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>インサイダーゲームツール</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta
@@ -17,16 +16,7 @@
 		/>
 		<link rel="stylesheet" href="../contents/css/style.css" />
 		<link rel="stylesheet" href="../contents/css/lineStyle.css" />
-		<script
-			src="https://code.jquery.com/jquery-3.3.1.min.js"
-			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			crossorigin="anonymous"
-		></script>
-		<script src="../contents/js/main.js"></script>
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		<script type="module" src="/src/pages/common.ts"></script>
 		<link
 			rel="icon"
 			type="image/vnd.microsoft.icon"
@@ -50,16 +40,13 @@
 		<meta property="og:locale" content="ja_JP" />
 	</head>
 	<body>
-		<script>
-			includeHtml("./include/header.html");
-		</script>
+		{{> header}}
 
 		<div id="container">
 			<header>
-				<script>
-					includeHtml("./include/logo.html");
-				</script>
+				{{> logo}}
 			</header>
+			{{> menubar}}
 			<div class="articlueTop">
 				<img class="mojiImg" src="../contents/img/zadankaiMoji.png" />
 				<img src="../contents/img/zadankai.jpg" />
@@ -321,9 +308,7 @@
 				</section>
 			</div>
 			<!--/contents-->
-			<script>
-				includeHtml("./include/footer.html");
-			</script>
+			{{> footer}}
 			<div id="page_top"><a href="#"></a></div>
 			<div id="page_top2"></div>
 		</div>

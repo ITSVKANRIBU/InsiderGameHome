@@ -4,7 +4,6 @@
     prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
   >
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>インサイダーゲームツール</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -16,10 +15,6 @@
       content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール"
     />
     <link rel="stylesheet" href="./contents/css/style.css" />
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <link
       rel="icon"
       type="image/vnd.microsoft.icon"
@@ -38,51 +33,30 @@
       content="特殊な配役をしたい場合はこちらから"
     />
     <meta property="og:locale" content="ja_JP" />
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <!-- Optional JavaScript -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./contents/js/main.js"></script>
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <script type="module" src="/src/pages/form.ts"></script>
   </head>
   <body class="eqnoreboot">
-    <script>
-      includeHtml("./contents/include/header.html");
-    </script>
+    {{> header}}
     <div id="container">
       <header>
-        <script>
-          includeHtml("./contents/include/logo.html");
-        </script>
+        {{> logo}}
       </header>
-      <div id="contents" class="container box">
+      <div
+        id="contents"
+        class="box box-border mx-auto w-full !px-[15px] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]"
+      >
         <section>
-          <h2 class="text-center">特殊村作成</h2>
-          <div class="row justify-content-center">
+          <h2 class="text-center !text-[2rem] !font-medium !leading-[1.2]">
+            特殊村作成
+          </h2>
+          <div class="relative -mx-[15px] flex flex-wrap justify-center pb-5">
             <div>
               <div class="spinner_area">
                 <input
                   type="number"
                   value="5"
-                  class="counter1 text-right w-25 countlabel"
+                  class="counter1 text-right w-1/4 countlabel"
                   data-max="20"
                   data-min="2"
                   disabled
@@ -109,7 +83,7 @@
                   <label>参加者1</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -121,7 +95,7 @@
                   <label>参加者2</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -133,7 +107,7 @@
                   <label>参加者3</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -145,7 +119,7 @@
                   <label>参加者4</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -157,7 +131,7 @@
                   <label>参加者5</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -168,12 +142,18 @@
               <input type="hidden" name="button" value="create" />
 
               <div class="buttonarea">
-                <button class="button" onclick="submitAction()">村作成</button>
-                <div class="alert alert-success infomessage w-100" role="alert">
+                <button class="button" type="button">村作成</button>
+                <div
+                  class="success-alert infomessage w-full rounded border border-green-300 bg-green-100 p-3 text-green-800"
+                  role="alert"
+                >
                   <strong id="villagenum"></strong
                   >村を作成しました。<br />参加者へ番号を伝えてください
                 </div>
-                <div class="alert alert-danger infomessage w-100" role="alert">
+                <div
+                  class="danger-alert infomessage w-full rounded border border-red-300 bg-red-100 p-3 text-red-800"
+                  role="alert"
+                >
                   異常が発生しました。
                 </div>
               </div>
@@ -182,9 +162,7 @@
         </section>
       </div>
       <!--/contents-->
-      <script>
-        includeHtml("./contents/include/footer.html");
-      </script>
+      {{> footer}}
     </div>
     <!--/container-->
   </body>

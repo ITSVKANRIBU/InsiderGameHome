@@ -79,16 +79,16 @@ Messages
 .messages {
   flex: 1 1 auto;
   color: #2f2f2f;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   width: 100%;
 }
 .messages .messages-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 101%;
+  position: relative;
+  min-height: 101%;
   width: 100%;
+  padding: 0 10px;
 }
 .messages .message {
   clear: both;
@@ -312,23 +312,6 @@ Message Box
 
 .message-box .message-submit:hover svg {
   transform: rotate(45deg);
-}
-
-/*--------------------
-Custom Srollbar
---------------------*/
-.mCSB_scrollTools {
-  margin: 1px -3px 1px 0;
-  opacity: 0;
-}
-
-.mCSB_inside > .mCSB_container {
-  margin-right: 0px;
-  padding: 0 10px;
-}
-
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /*--------------------

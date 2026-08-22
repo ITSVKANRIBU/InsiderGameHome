@@ -1,0 +1,4 @@
+# home
+/webcontent/index.html /
+/webcontent/* /:splat
+/opnion.html /opinion.html 301
