@@ -27,6 +27,7 @@
   "homepage": "https://github.com/ITSVKANRIBU/InsiderGameHome#readme",
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
     "jsdom": "^30.0.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",

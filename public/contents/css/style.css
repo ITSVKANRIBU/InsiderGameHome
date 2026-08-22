@@ -493,6 +493,7 @@ h2#mkj {
   position: fixed;
   right: 0;
   bottom: -100px;
+  transition: bottom 300ms ease;
   background-image: url(../img/top1.png);
   opacity: 0.9;
   border-radius: 50%;
