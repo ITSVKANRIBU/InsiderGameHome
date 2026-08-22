@@ -190,7 +190,7 @@ form.html は「＋/−」での参加者欄増減、line.html は初回メッ�
 | D15 | main.js の責務混在                                                                                                             | §2.3                                               | TS 化時にページ別エントリへ分割（P4）                                                               | P4       |
 | D16 | jQuery 2/3 混在（方針: 全廃）                                                                                                  | §2.5                                               | ルート系ページは P4 で vanilla TS 化して撤去。line.html / karaoke は P7 で撤去（それまで CDN 維持） | P4, P7   |
 | D17 | line.js がサーバレスポンスを HTML として挿入（[line.js:69-73](contents/js/line.js)）                                           | XSS になり得るのは自社バックエンドのみで脅威は低い | P7 のチャット刷新時にエスケープ方針を含めて設計。それまで触らない                                   | P7       |
-| D18 | CSS 命名の紛らわしさ（`line.css` はチャットUI、`lineStyle.css` は記事の会話風表示。セレクタ衝突はなし）                        | grep 比較済み                                      | 提案のみ（`docs/refactor-proposals.md` へ）                                                         | P8       |
+| D18 | CSS 命名の紛らわしさ（`line.css` はチャットUI、`lineStyle.css` は記事の会話風表示。セレクタ衝突はなし）                        | grep 比較済み                                      | 提案のみ（`docs/superpowers/specs/2026-08-23-refactor-proposals.md` へ）                              | P8       |
 | D19 | 未参照の可能性がある画像                                                                                                       | 外部直リンクを否定できない                         | 削除禁止。提案のみ                                                                                  | P8       |
 | D20 | Bootstrap 依存（form.html, karaoke。CDN 読み込み＋ユーティリティクラス）                                                       | オーナー「撤廃し Tailwind へ」                     | P7 で Tailwind に置換。他ページへ preflight の影響を出さない（§8 P3-1 注意書き）                    | P7       |
 
@@ -201,7 +201,7 @@ form.html は「＋/−」での参加者欄増減、line.html は初回メッ�
 ### Phase 1: 現状確認と安全網
 
 1. `git status`、作業ブランチ作成、baseline 記録（§6）。
-2. 手動検証チェックリストを `docs/verification-checklist.md` として作成（§6・§9 を清書）。
+2. 手動検証チェックリストを `docs/superpowers/plans/YYYY-MM-DD-verification-checklist.md` として作成（§6・§9 を清書）。
 
 ### Phase 2: 現行構成のままの整理（移行前に済ませる）
 
@@ -266,7 +266,7 @@ form.html は「＋/−」での参加者欄増減、line.html は初回メッ�
 
 ### Phase 8: 提案の文書化
 
-1. D18, D19、CSS のバンドル化、既存カスタム CSS の Tailwind への段階的移行、記事ページのテンプレート化、lint/format（ESLint + Prettier）と CI（GitHub Actions で `build` + `test`）の導入案を `docs/refactor-proposals.md` にまとめる。実装しない。
+1. D18, D19、CSS のバンドル化、既存カスタム CSS の Tailwind への段階的移行、記事ページのテンプレート化、lint/format（ESLint + Prettier）と CI（GitHub Actions で `build` + `test`）の導入案を `docs/superpowers/specs/YYYY-MM-DD-refactor-proposals.md` にまとめる。実装しない。
 
 ---
 
@@ -306,7 +306,7 @@ npm run test      # Phase 4 以降
 2. スキップ・停止した項目とその理由（§5 該当時はその番号）
 3. 実行した検証コマンドと結果（9-A / 9-B の項目ごとに baseline との差分有無を明記。テストは pass/fail 数）
 4. Netlify 側でダッシュボード操作が必要な事項があれば列挙（例: ビルド設定の確認）
-5. `docs/refactor-proposals.md` に記載した提案の一覧
+5. `docs/superpowers/specs/YYYY-MM-DD-refactor-proposals.md` に記載した提案の一覧
 6. Phase 7 に進む場合は、スクリーンショット比較と承認依頼
 
 ## 11. Out-of-scope Items（今回はやらない）
