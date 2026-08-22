@@ -7,90 +7,142 @@ import {
   zeroPadding,
 } from "../chat/logic";
 
-type JQueryLike = {
-  (selector: string): any;
-  trim(value: unknown): string;
-};
+const COOKIE_NAME = "userId";
+const COOKIE_EXPIRY_DAYS = 365;
 
-type CookieApi = {
-  get(key: string): string | undefined;
-  set(key: string, value: string, options: { expires: number }): void;
-};
-
-const jquery = (window as unknown as { jQuery: JQueryLike }).jQuery;
-const cookies = (window as unknown as { Cookies: CookieApi }).Cookies;
-const messages = jquery(".messages-content");
 let userId = "";
 
+function getCookie(name: string): string | undefined {
+  const cookie = document.cookie.split("; ").find((entry) => {
+    const separator = entry.indexOf("=");
+    return separator !== -1 && decodeURIComponent(entry.slice(0, separator)) === name;
+  });
+
+  if (!cookie) {
+    return undefined;
+  }
+
+  const separator = cookie.indexOf("=");
+  return decodeURIComponent(cookie.slice(separator + 1));
+}
+
+function setCookie(name: string, value: string): void {
+  const expires = new Date();
+  expires.setDate(expires.getDate() + COOKIE_EXPIRY_DAYS);
+  document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/`;
+}
+
+function getMessageContainer(): HTMLElement | null {
+  return document.querySelector<HTMLElement>(".messages-content");
+}
+
 function updateScrollbar(): void {
-  messages
-    .mCustomScrollbar("update")
-    .mCustomScrollbar("scrollTo", "bottom", {
-      scrollInertia: 10,
-      timeout: 0,
-    });
-}
-
-function setDate(): void {
-  const date = new Date();
-  const timestamp =
-    `${zeroPadding(date.getHours(), 2)}:${zeroPadding(date.getMinutes(), 2)}`;
-  jquery(
-    `<div class="timestamp">${timestamp}</div>`,
-  ).appendTo(jquery(".message:last"));
-}
-
-function setUserId(): void {
-  userId = cookies.get("userId") ?? "";
-  if (!userId) {
-    userId = createUserId();
-    cookies.set("userId", userId, { expires: 365 });
+  const viewport = document.querySelector<HTMLElement>(".messages");
+  if (viewport) {
+    viewport.scrollTop = viewport.scrollHeight;
   }
 }
 
-function putMessage(message: string): void {
-  jquery(".message.loading").remove();
+function setDate(message: HTMLElement): void {
+  const date = new Date();
+  const timestamp = `${zeroPadding(date.getHours(), 2)}:${zeroPadding(
+    date.getMinutes(),
+    2,
+  )}`;
+  const timestampElement = document.createElement("div");
+  timestampElement.className = "timestamp";
+  timestampElement.textContent = timestamp;
+  message.append(timestampElement);
+}
 
-  jquery(
-    '<div class="message new"><figure class="avatar"><img src="./contents/img/icon.png" /></figure>' +
-      message +
-      "</div>",
-  )
-    .appendTo(jquery(".mCSB_container"))
-    .addClass("new");
-  setDate();
+function createAvatar(): HTMLElement {
+  const avatar = document.createElement("figure");
+  avatar.className = "avatar";
+  const image = document.createElement("img");
+  image.src = "/contents/img/icon.png";
+  image.alt = "インサイダーゲームツール";
+  avatar.append(image);
+  return avatar;
+}
+
+function appendMessage(
+  messageText: string,
+  className: "message new" | "message message-personal new",
+): HTMLElement | null {
+  const container = getMessageContainer();
+  if (!container) {
+    return null;
+  }
+
+  const message = document.createElement("div");
+  message.className = className;
+  if (className === "message new") {
+    message.append(createAvatar());
+  }
+  message.append(document.createTextNode(messageText));
+  container.append(message);
+  setDate(message);
+  return message;
+}
+
+function putMessage(messageText: string): void {
+  document.querySelectorAll(".message.loading").forEach((element) => {
+    element.remove();
+  });
+  appendMessage(messageText, "message new");
   updateScrollbar();
 }
 
-function putImg(imgUrl: string): void {
-  const image = new Image();
-  image.src = imgUrl;
-  image.onload = () => {
-    const imageDom = `<img src="${imgUrl}" class="thumbnailI" alt="役職画像" />`;
-    jquery(
-      '<div class="message new"><figure class="avatar"><img src="./contents/img/icon.png" /></figure>' +
-        imageDom +
-        "</div>",
-    )
-      .appendTo(jquery(".mCSB_container"))
-      .addClass("new");
-    setDate();
-    updateScrollbar();
-  };
+function getSafeImageUrl(value: string): string | null {
+  try {
+    const url = new URL(value, window.location.origin);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.href : null;
+  } catch {
+    return null;
+  }
 }
 
-async function insertMessage(): Promise<void> {
-  const input = jquery(".message-input");
-  const message = input.val();
-  if (jquery.trim(message) === "") {
+function putImg(imgUrl: string): void {
+  const safeUrl = getSafeImageUrl(imgUrl);
+  if (!safeUrl) {
     return;
   }
 
-  jquery('<div class="message message-personal">' + message + "</div>")
-    .appendTo(jquery(".mCSB_container"))
-    .addClass("new");
-  setDate();
-  input.val(null);
+  const image = new Image();
+  image.onload = () => {
+    const container = getMessageContainer();
+    if (!container) {
+      return;
+    }
+
+    const message = document.createElement("div");
+    message.className = "message new";
+    message.append(createAvatar());
+    const imageElement = document.createElement("img");
+    imageElement.className = "thumbnailI";
+    imageElement.src = safeUrl;
+    imageElement.alt = "役職画像";
+    message.append(imageElement);
+    container.append(message);
+    setDate(message);
+    updateScrollbar();
+  };
+  image.src = safeUrl;
+}
+
+async function insertMessage(): Promise<void> {
+  const input = document.querySelector<HTMLTextAreaElement>(".message-input");
+  if (!input) {
+    return;
+  }
+
+  const message = input.value.trim();
+  if (message === "") {
+    return;
+  }
+
+  appendMessage(message, "message message-personal new");
+  input.value = "";
   updateScrollbar();
 
   const data = await callApi(userId, message);
@@ -101,21 +153,31 @@ async function insertMessage(): Promise<void> {
   }
 }
 
+function setUserId(): void {
+  userId = getCookie(COOKIE_NAME) ?? "";
+  if (!userId) {
+    userId = createUserId();
+    setCookie(COOKIE_NAME, userId);
+  }
+}
+
 function initChat(): void {
   setUserId();
-  messages.mCustomScrollbar();
   window.setTimeout(() => putMessage(FIRST_MESSAGE), 100);
 
-  jquery(".message-submit").on("click", () => {
+  const submit = document.querySelector<HTMLButtonElement>(".message-submit");
+  submit?.addEventListener("click", () => {
     void insertMessage();
   });
 
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      void insertMessage();
-    }
-  });
+  document
+    .querySelector<HTMLTextAreaElement>(".message-input")
+    ?.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        void insertMessage();
+      }
+    });
 }
 
 if (typeof window !== "undefined") {
