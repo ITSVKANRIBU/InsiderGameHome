@@ -9,7 +9,9 @@
 2. **生成順序を守る**: キャラクターシート（A-1, A-2）を最初に生成し、以降のキャラ登場アセットは必ずキャラシートを**参照画像として渡して**生成する（絵柄・シルエットの一貫性確保のため）。
 3. 各プロンプトは「共通スタイルベース ＋ アセット個別指定」の連結で構成する。
 4. 生成サイズは 1024×1024 / 1536×1024 / 1024×1536 のいずれか。最終サイズが異なるものはトリミングで対応する。
-5. 文字（日本語コピー・ロゴ）はAI生成では崩れるため**画像内に生成しない**。文字が必要なアセット（OGP等）は文字スペースを空けて生成し、後工程で載せる。
+5. 文字の扱いはアセット種別で分ける:
+   - **A〜B-18（キャラ・オブジェクト素材）**: 画像内に文字を生成しない（`no text, no letters` を維持）。
+   - **B-19 以降（OGP・イメージボード・動画）**: サイト名やコピーを入れる場合は、後載せではなく**画像生成と同時に、かわいい飾り文字（丸くて太いバブルレタリング風の日本語ハンドレタリング）として生成する**。文字が崩れた場合は採用せず再生成する。飾り文字の共通指定: `cute chunky rounded Japanese hand-lettering, bubbly kawaii logo style, deep violet #5E3A87 letters with petal pink #F7C9DE outline and soft drop shadow`
 6. 採用した生成物は WebP に変換して `public/contents/img/` 配下に配置する（透過が必要なものは透過PNG→WebP）。
 
 ## 共通スタイルベースプロンプト
@@ -140,13 +142,15 @@ wide composition, generous empty space in the upper left for a headline
 ### B-19: OGP画像（1536×1024 で生成 → 1200×630 にトリミング）
 
 ```
-（共通ベース＋）social media banner illustration: [まる定義] and [ふーど定義]
-side by side in the right half, floating pastel mystery objects around them,
-whisper lavender background with soft grain texture, the entire left half is
-kept empty as clean negative space for text overlay, wide composition
+（共通ベース＋飾り文字共通指定＋）social media banner illustration:
+[まる定義] and [ふーど定義] side by side in the right half, floating pastel
+mystery objects around them, whisper lavender background with soft grain texture,
+in the left half the Japanese title 「インサイダーゲーム」 written in cute chunky
+rounded kawaii hand-lettering as the main logo, with the smaller Japanese
+tagline 「答えを知ってるのは、だれ？」 below it, wide composition
 ```
 
-生成後、左半分にサイト名コピーを後工程で載せる（フォント: Zen Maru Gothic 900）。
+文字（「インサイダーゲーム」「答えを知ってるのは、だれ？」）が一字でも崩れていたら不採用とし、再生成する。
 
 ### B-20: favicon（1024×1024 で生成 → 32/16px に縮小）
 
@@ -164,8 +168,8 @@ flat design, centered, no gradients
 
 | ID | ファイル名 | 内容 |
 |---|---|---|
-| C-1 | `mock_hero` | トップページのヒーローセクション完成イメージ。`smartphone mockup of a cute pastel website hero section, blob mascot floating among pastel 3D objects, headline space, green CTA button shape at the bottom`（共通ベース適用、文字なし） |
-| C-2 | `mock_dark` | rule.html 役職紹介（ダーク面）の完成イメージ。`smartphone mockup of a dark mysterious website section #17131F with three cute glowing role cards in a row, neon magenta accents`（ダーク面追加プロンプト適用） |
+| C-1 | `mock_hero` | トップページのヒーローセクション完成イメージ。`smartphone mockup of a cute pastel website hero section, blob mascot floating among pastel 3D objects, the Japanese headline 「答えを知ってるのは、だれ？」 in cute chunky rounded kawaii hand-lettering at the top, a green rounded CTA button at the bottom`（共通ベース＋飾り文字共通指定を適用） |
+| C-2 | `mock_dark` | rule.html 役職紹介（ダーク面）の完成イメージ。`smartphone mockup of a dark mysterious website section #17131F with three cute glowing role cards in a row, neon magenta accents, the Japanese heading 「やくしょく しょうかい」 in cute rounded kawaii hand-lettering glowing in neon magenta at the top`（ダーク面追加プロンプト＋飾り文字共通指定を適用） |
 
 ## D. 動画（任意・確認用/SNS宣伝用）
 
@@ -174,14 +178,15 @@ flat design, centered, no gradients
 | ID | 用途 | プロンプト |
 |---|---|---|
 | D-1 | ヒーロー演出の動きイメージ確認（10秒ループ・横） | `slow dreamy camera drift through floating pastel objects (masquerade mask, magnifying glass, playing cards) around a cute white blob mascot, lavender pastel sky, objects gently bobbing with parallax depth, soft sparkles, seamless loop, kawaii flat-3D clay style` |
-| D-2 | SNS宣伝ショート（15秒・縦 9:16） | `a cute white blob mascot invites the viewer, friends gather around a smartphone, a hooded blob sneaks in among them, playful suspicion, everyone laughs, pastel kawaii style, upbeat party mood, vertical composition` |
+| D-2 | SNS宣伝ショート（15秒・縦 9:16） | `a cute white blob mascot invites the viewer, friends gather around a smartphone, a hooded blob sneaks in among them, playful suspicion, everyone laughs, pastel kawaii style, upbeat party mood, vertical composition, ending title card with the Japanese title 「インサイダーゲーム」 in cute chunky rounded kawaii hand-lettering`（飾り文字共通指定を適用） |
 
 ## 受け入れチェックリスト（全アセット共通）
 
 - [ ] シルエット・目鼻の描き方がキャラシート（A-1/A-2）と一致している
 - [ ] 使用色が §2 のパレット（HEX）から大きく外れていない
 - [ ] 透過指定アセットは背景が完全に透過で、輪郭にフリンジ（白縁）がない
-- [ ] 画像内に文字・ロゴが生成されていない
+- [ ] A〜B-18: 画像内に文字・ロゴが生成されていない
+- [ ] B-19以降で文字を入れたもの: 日本語の飾り文字が一字も崩れず正しく読める（崩れは不採用・再生成）
 - [ ] 小さく表示しても表情が読める（マスコット系）
 - [ ] WebP変換後、1ファイル200KB以下（B-15/B-19/C系は500KB以下）
 
