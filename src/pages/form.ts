@@ -63,8 +63,8 @@ export async function submitVillage(): Promise<void> {
     return;
   }
 
-  const successAlert = document.querySelector<HTMLElement>(".alert-success");
-  const dangerAlert = document.querySelector<HTMLElement>(".alert-danger");
+  const successAlert = document.querySelector<HTMLElement>(".success-alert");
+  const dangerAlert = document.querySelector<HTMLElement>(".danger-alert");
   const villageNumber = document.querySelector<HTMLElement>("#villagenum");
 
   button.disabled = true;
