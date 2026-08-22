@@ -41,15 +41,20 @@ npm run test
 
 ### Vite / 配信確認
 
-- [ ] `dist/` に `/index.html`、`/rule.html`、`/Instructions.html`、`/form.html`、`/line.html`、`/opinion.html`、記事 4 ページ、`/other/powerpointkaraoke.html` が同一パスで存在する。
-- [ ] `dist/contents/img/`、`dist/contents/json/`、`dist/contents/font/` に直リンク対象アセットが同一パスで存在する。
-- [ ] `dist/_redirects` に既存の `/webcontent/*` 互換 2 行と `/opnion.html /opinion.html 301` が存在する。
-- [ ] 全ページの OGP、Twitter Card、`google-site-verification`、favicon、description / keywords が baseline と一致する。
-- [ ] preview 上の 9 URL で表示、ヘッダー / フッター / メニュー、Console に説明できない差分がない。
+- [x] `dist/` に `/index.html`、`/rule.html`、`/Instructions.html`、`/form.html`、`/line.html`、`/opinion.html`、記事 4 ページ、`/other/powerpointkaraoke.html` が同一パスで存在する。
+- [x] `dist/contents/img/`、`dist/contents/json/`、`dist/contents/font/` に直リンク対象アセットが同一パスで存在する。
+- [x] `dist/_redirects` に既存の `/webcontent/*` 互換 2 行と `/opnion.html /opinion.html 301` が存在する。
+- [x] 全ページの OGP、Twitter Card、`google-site-verification`、favicon、description / keywords が baseline と一致する。
+- [x] preview 上の 9 URL で表示、ヘッダー / フッター / メニュー、Console に説明できない差分がない。
 
 ### 機能確認
 
-- [ ] `form.html`: 参加者数 2〜20、ラベル `参加者N`、ペイロード `{"message":[...]}`、Heroku へのリクエストが 1 本。
-- [ ] `line.html`: 初回メッセージ、送信と応答、再読み込み後の `userId` 維持、通信失敗時のフェールセーフメッセージ。
-- [ ] `other/powerpointkaraoke.html`: スライド 0〜4 の巡回と前後ボタンの活性制御。
-- [ ] `npm run test` が全件 pass。
+- [x] `form.html`: 参加者数 2〜20、ラベル `参加者N`、ペイロード `{"message":[...]}` を純粋ロジック／APIテストで確認。外部 Heroku への実送信は行っていない。
+- [x] `line.html`: 初回メッセージ、ネイティブスクロール、通信失敗時のフェールセーフメッセージを確認。cookie のキー名・有効期限はコードレビューで確認し、外部 API への実送信は行っていない。
+- [x] `other/powerpointkaraoke.html`: スライド 0〜4 の巡回と前後ボタンの活性制御。
+- [x] `npm run test` が全件 pass（4 files / 13 tests）。
+
+### 移行後の補足
+
+- 実 API への送信はバックエンドの村状態を変更するため、ブラウザからは実行せず、`fetch` のモックを使った `src/chat/api.test.ts` と payload テストで契約を確認した。
+- Phase 7 の比較画像は、作業ブランチ `refactor/tailwind-legacy-removal` で form / line / karaoke の before / after を取得済み。マージ前にオーナー確認を行う。
