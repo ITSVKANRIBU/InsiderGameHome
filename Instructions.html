@@ -43,13 +43,9 @@
   <body>
     <div id="container">
       <header>
-        <script>
-          includeHtml("./contents/include/logo.html");
-        </script>
+        {{> logo}}
       </header>
-      <script>
-        includeHtml("./contents/include/menubar.html");
-      </script>
+      {{> menubar}}
       <div id="contents">
         <section>
           <h2 id="mkj">目次</h2>
@@ -269,9 +265,7 @@
         </section>
       </div>
       <!--/contents-->
-      <script>
-        includeHtml("./contents/include/footer.html");
-      </script>
+      {{> footer}}
       <div id="page_top"><a href="#"></a></div>
       <div id="page_top2"></div>
     </div>

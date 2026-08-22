@@ -59,14 +59,10 @@
     <script src="./contents/js/main.js"></script>
   </head>
   <body class="eqnoreboot">
-    <script>
-      includeHtml("./contents/include/header.html");
-    </script>
+    {{> header}}
     <div id="container">
       <header>
-        <script>
-          includeHtml("./contents/include/logo.html");
-        </script>
+        {{> logo}}
       </header>
       <div id="contents" class="container box">
         <section>
@@ -177,9 +173,7 @@
         </section>
       </div>
       <!--/contents-->
-      <script>
-        includeHtml("./contents/include/footer.html");
-      </script>
+      {{> footer}}
     </div>
     <!--/container-->
   </body>

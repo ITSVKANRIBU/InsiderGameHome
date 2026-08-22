@@ -61,9 +61,7 @@
   <body>
     <div id="container">
       <header>
-        <script>
-          includeHtml("./contents/include/logo.html");
-        </script>
+        {{> logo}}
       </header>
       <!-- imgdivStart -->
       <div id="indeximgdiv">
@@ -125,9 +123,7 @@
         </div>
       </div>
       <!-- imgdivEnd -->
-      <script>
-        includeHtml("./contents/include/menubar.html");
-      </script>
+      {{> menubar}}
       <div id="contents">
         <div class="readmore">
           <input id="check1" class="readmore-check" type="checkbox" />
@@ -189,7 +185,7 @@
                   >を開催
                 </dd>
                 <dt>2020/02/03</dt>
-                <dd><a href="opnion.html">ご意見番</a>を追加しました。</dd>
+                <dd><a href="opinion.html">ご意見番</a>を追加しました。</dd>
                 <dt>2020/01/23</dt>
                 <dd><a href="form.html">特殊村作成</a>機能を追加しました。</dd>
                 <dt>2020/01/10</dt>
@@ -367,9 +363,7 @@
         </section>
       </div>
       <!--/contents-->
-      <script>
-        includeHtml("./contents/include/footer.html");
-      </script>
+      {{> footer}}
     </div>
     <!--/container-->
   </body>

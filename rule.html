@@ -21,9 +21,9 @@
 	<body>
 		<div id="container">
 			<header>
-				<script>includeHtml("./contents/include/logo.html");</script>
+				{{> logo}}
 			</header>
-			<script>includeHtml("./contents/include/menubar.html");</script>
+			{{> menubar}}
 			<div id="contents">
 				<section>
 					<h2>インサイダーゲームのルール</h2>
@@ -56,7 +56,7 @@
 
 			</div>
 			<!--/contents-->
-			<script>includeHtml("./contents/include/footer.html");</script>
+			{{> footer}}
 		</div>
 		<!--/container-->
 	</body>

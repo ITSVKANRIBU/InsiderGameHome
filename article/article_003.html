@@ -55,16 +55,13 @@
 		/>
 	</head>
 	<body>
-		<script>
-			includeHtml("./include/header.html");
-		</script>
+		{{> header}}
 
 		<div id="container">
 			<header>
-				<script>
-					includeHtml("./include/logo.html");
-				</script>
+				{{> logo}}
 			</header>
+			{{> menubar}}
 			<!-- imgdivStart -->
 			<div id="indeximgdiv">
 				<script>
@@ -356,9 +353,7 @@
 				<br />
 			</div>
 			<!--/contents-->
-			<script>
-				includeHtml("./include/footer.html");
-			</script>
+			{{> footer}}
 			<div id="page_top"><a href="#"></a></div>
 			<div id="page_top2"></div>
 		</div>
