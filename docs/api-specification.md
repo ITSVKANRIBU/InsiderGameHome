@@ -1,0 +1,155 @@
+# InsiderGameHelper バックエンド API 仕様書
+
+本サイト（InsiderGameHome）が利用する、インサイダーゲーム用 LINE BOT バックエンド（別リポジトリ: LineBot / `sample-spring-boot-echo` モジュール）の公開 API 仕様。サイト側から利用できる必要最低限のエンドポイントのみを記載する。
+
+- **ベース URL**: `https://insidergamehelper.herokuapp.com`
+- **認証**: なし
+- **CORS**: 公開 API 2 本は全オリジン許可（`@CrossOrigin`）
+- **文字コード**: UTF-8 / JSON
+
+## 公開エンドポイント一覧
+
+| メソッド | パス | 用途 | 利用ページ |
+|---|---|---|---|
+| GET | `/callapi` | チャット操作（村の作成・参加・設定） | `line.html`（`contents/js/line.js`） |
+| POST（全メソッド受付） | `/specialvillage` | 特殊村の作成 | `form.html`（`contents/js/main.js`） |
+
+このほかに `POST /callback`（LINE Messaging API の Webhook）が存在するが、LINE プラットフォーム専用（署名検証あり）でありサイトからは利用しない。
+
+---
+
+## 1. GET /callapi
+
+チャットからの入力 1 件を処理し、応答を **LINE Messaging API のメッセージ形式の JSON 配列**で返す。
+
+### リクエスト
+
+```
+GET /callapi?userId={userId}&message={message}
+```
+
+| クエリパラメータ | 必須 | 説明 |
+|---|---|---|
+| `userId` | ○ | 呼び出し元が発行する参加者識別子。サーバはこの値でユーザーを識別する（サイト側は cookie `userId` に一意値を 365 日保存して送信）。空文字・未指定は HTTP 400 |
+| `message` | ○ | ユーザーの入力文字列。空文字・未指定は HTTP 400 |
+
+### `message` の解釈
+
+| 入力 | 動作 |
+|---|---|
+| `お題` / `題` | 通常村を新規作成（送信者がオーナーになる） |
+| `神` | GM（神）モードで通常村を新規作成 |
+| 数値 `2`〜`999` | 自分の（人数未設定の）村の参加人数を設定し、配役を抽選 |
+| 数値 `1000`〜`9999` | 通常村へ参加（オーナーの場合は配布状況を返す） |
+| 数値 `10000` 以上 | 特殊村へ参加 |
+| 上記以外の文字列 | 自分の（お題未設定の）村のお題として設定 |
+
+村番号は通常村が 4 桁（1000〜9999）、特殊村が 5 桁（10000〜99998）で採番される。
+
+### レスポンス
+
+HTTP 200。メッセージオブジェクトの JSON 配列。要素の `type` は `text` または `template` の 2 種類。
+
+**text 型**
+
+```json
+[
+  { "type": "text", "text": "1234村 のお題を『りんご』に設定しました。\n..." }
+]
+```
+
+**template 型**（buttons テンプレート。`thumbnailImageUrl` は付く場合と付かない場合がある）
+
+```json
+[
+  {
+    "type": "template",
+    "altText": "1234村 を新しく作成しました。...",
+    "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https://.../GM.png",
+      "title": "1234村",
+      "text": "人数を『5人』に設定しました。\n皆さんに村番号を伝えてください。",
+      "actions": [ { "type": "message", "label": "確認", "text": "1234" } ]
+    }
+  }
+]
+```
+
+サイト側（`line.js`）が参照するのは以下のフィールドのみ。
+
+- `data[0].type`（`"text"` / `"template"`）
+- `data[0].text`（text 型の本文）
+- `data[0].template.text`（template 型の本文）
+- `data[0].template.thumbnailImageUrl`（役職画像 URL。存在する場合のみ表示）
+
+**対象の村が見つからない場合**（存在しない村番号、人数設定・お題設定の対象となる自分の村がない等）もエラーにはならず、HTTP 200 で以下を返す。
+
+```json
+[ { "type": "text", "text": "村が作成されていません" } ]
+```
+
+満員の村への参加は `{"type":"text","text":"村がいっぱいです。"}`、参加人数に 1 以下を指定した場合はエラーメッセージの text 型が返る。
+
+### エラー
+
+| ステータス | 条件 | ボディ |
+|---|---|---|
+| 400 | `userId` または `message` が未指定・空 | なし |
+| 500 | サーバ内部エラー | `{ "error": "内部エラーが発生しました。" }` |
+
+---
+
+## 2. POST /specialvillage
+
+参加者ごとに配るメッセージの配列から**特殊村**を作成し、採番された村番号を返す。参加者は LINE または `/callapi` から村番号を送信すると、配列の先頭から順に 1 人 1 件ずつメッセージを受け取る。
+
+### リクエスト
+
+```
+POST /specialvillage
+Content-Type: (不問。ボディを生の JSON として読む)
+```
+
+```json
+{ "message": ["参加者1へのメッセージ", "参加者2へのメッセージ", "..."] }
+```
+
+| フィールド | 型 | 制約 |
+|---|---|---|
+| `message` | string の配列 | 必須。1〜100 要素。各要素は 5000 文字以内（LINE のテキスト上限）。`null`・空文字の要素は「メッセージは特にありません。」に置き換えられる |
+
+### レスポンス
+
+HTTP 200。`data` に採番された村番号（5 桁、文字列）が入る。
+
+```json
+{ "data": "12345" }
+```
+
+サイト側（`form.html`）はこの `data` を村番号として画面に表示する。
+
+### エラー
+
+| ステータス | 条件 | ボディ |
+|---|---|---|
+| 400 | JSON 不正、`message` が欠落・空配列・101 要素以上、5000 文字超の要素を含む | なし |
+| 500 | サーバ内部エラー | `{ "error": "内部エラーが発生しました。" }` |
+
+---
+
+## 3. 制約・注意事項
+
+- **村の状態はサーバのプロセスメモリのみで保持される。** 永続化はなく、サーバ（Heroku dyno）の再起動で全村が消える。
+- 通常村はサーバ全体で **50 村まで**。超過すると最も古い村から削除される（FIFO）。
+- `userId` がセッションキーそのもの。値を変えると別ユーザー扱いになるため、サイト側は cookie のキー名 `userId`・有効期限 365 日を変更しないこと（[refactor-instructions.md](../refactor-instructions.md) §5-2 参照）。
+- API の リクエスト/レスポンス契約はバックエンド側リポジトリ（LineBot）で管理されており、サイト側から変更できない。契約変更が必要になった場合は実装を止めてオーナーに確認する。
+
+## 4. 参照実装
+
+| 項目 | 場所（LineBot リポジトリ） |
+|---|---|
+| `/callapi` | `sample-spring-boot-echo/.../echo/MainController.java` |
+| `/specialvillage` | `sample-spring-boot-echo/.../echo/SpecialVillageController.java` |
+| エラー応答の共通化 | `sample-spring-boot-echo/.../echo/ApiExceptionHandler.java` |
+| ゲーム操作の本体 | `sample-spring-boot-echo/.../game/VillageService.java` |
