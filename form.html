@@ -33,13 +33,7 @@
       content="特殊な配役をしたい場合はこちらから"
     />
     <meta property="og:locale" content="ja_JP" />
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
     <script type="module" src="/src/pages/form.ts"></script>
   </head>
   <body class="eqnoreboot">
@@ -48,16 +42,21 @@
       <header>
         {{> logo}}
       </header>
-      <div id="contents" class="container box">
+      <div
+        id="contents"
+        class="box box-border mx-auto w-full !px-[15px] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]"
+      >
         <section>
-          <h2 class="text-center">特殊村作成</h2>
-          <div class="row justify-content-center">
+          <h2 class="text-center !text-[2rem] !font-medium !leading-[1.2]">
+            特殊村作成
+          </h2>
+          <div class="relative -mx-[15px] flex flex-wrap justify-center pb-5">
             <div>
               <div class="spinner_area">
                 <input
                   type="number"
                   value="5"
-                  class="counter1 text-right w-25 countlabel"
+                  class="counter1 text-right w-1/4 countlabel"
                   data-max="20"
                   data-min="2"
                   disabled
@@ -84,7 +83,7 @@
                   <label>参加者1</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -96,7 +95,7 @@
                   <label>参加者2</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -108,7 +107,7 @@
                   <label>参加者3</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -120,7 +119,7 @@
                   <label>参加者4</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -132,7 +131,7 @@
                   <label>参加者5</label>
                   <div class="messageInput">
                     <textarea
-                      class="form-control"
+                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
                       name="message"
                       placeholder="送りたいメッセージを入力"
                       maxlength="150"
@@ -144,11 +143,17 @@
 
               <div class="buttonarea">
                 <button class="button" type="button">村作成</button>
-                <div class="alert alert-success infomessage w-100" role="alert">
+                <div
+                  class="infomessage w-full rounded border border-green-300 bg-green-100 p-3 text-green-800"
+                  role="alert"
+                >
                   <strong id="villagenum"></strong
                   >村を作成しました。<br />参加者へ番号を伝えてください
                 </div>
-                <div class="alert alert-danger infomessage w-100" role="alert">
+                <div
+                  class="infomessage w-full rounded border border-red-300 bg-red-100 p-3 text-red-800"
+                  role="alert"
+                >
                   異常が発生しました。
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 import handlebars from "vite-plugin-handlebars";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
@@ -8,6 +9,7 @@ const fromRoot = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 export default defineConfig({
   root: projectRoot,
   plugins: [
+    tailwindcss(),
     handlebars({
       partialDirectory: fromRoot("./partials"),
       compileOptions: {
