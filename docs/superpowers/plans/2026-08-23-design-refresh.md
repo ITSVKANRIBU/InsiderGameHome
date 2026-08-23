@@ -10,6 +10,8 @@
 
 **Spec:** `docs/superpowers/specs/2026-08-23-design-refresh-design.md`（画像アセットは `docs/superpowers/specs/2026-08-23-asset-generation-guide.md` に従い生成済み・コミット済み）
 
+**Design System:** `.claude/skills/insider-game-tool-design/`（トークン定義の正。`tokens/colors.css` `typography.css` `shape.css` `motion.css` `base.css`。数値はここから転記し、Task 1 で Tailwind の `@theme` に実装する。デザイン規約の詳細は同スキルの `readme.md`）
+
 ## Global Constraints
 
 - **変更禁止ファイル**: `src/form-logic.ts` / `src/chat/logic.ts` / `src/chat/api.ts` / `src/config.ts` / `public/_redirects` / `netlify.toml`
@@ -18,6 +20,8 @@
 - **LINE友だち追加URL**: `https://line.me/R/ti/p/%40966mpnqz`（一字も変えない）
 - **CTA文言**: 「友だち追加してはじめる」
 - **カラートークン**（HEX厳守）: base `#F3EEF6` / primary `#F7C9DE` / secondary `#C9DEF7` / accent `#5E3A87` / ink `#2B2438` / cta `#06C755` / dark-base `#17131F` / dark-accent `#FF3EA5` / dark-sub `#5EE7FF` / dark-text `#FFC9E8` / dark-line `#3A2E4D`
+- **生の値をCSSに直接書かない**: 角丸・影・イージング・発光は設計システムのトークン（`--radius-card`, `--shadow-card`, `--ease-pop`, `--glow-neon` 等）を `var()` で参照する。Tailwind 標準スケールで足りるもの（余白 `--space-*`、フォントサイズ `--text-*`）は Tailwind の組み込みユーティリティを使い、`@theme` に重複宣言しない
+- **Task 6 以降のCSSスニペットは設計システム導入前に書かれたもの**で、角丸・影・発光が生の値のまま残っている。実装時は Task 1 で定義したトークンの `var()` 参照に置き換える（値は同一なので見た目は変わらない）。対応表: `1.5rem`→`var(--radius-card)` / `1.25rem`→`var(--radius-bubble)` / `1rem`(画像・FAQ)→`var(--radius-img)` / `0.75rem`(入力)→`var(--radius-input)` / `9999px`→`var(--radius-pill)` / `0.25rem`(吹き出しの角)→`var(--radius-bubble-tail)` / `0 4px 16px rgb(94 58 135 / 0.08)`→`var(--shadow-card)` / `0 12px 28px rgb(94 58 135 / 0.16)`→`var(--shadow-card-hover)` / `0 2px 8px rgb(94 58 135 / 0.1)`→`var(--shadow-pill)` / `0 6px 20px rgb(6 199 85 / 0.35)`→`var(--shadow-cta)` / `0 -4px 20px rgb(94 58 135 / 0.15)`→`var(--shadow-nav)` / `0 0 16px rgb(255 62 165 / 0.45)`→`var(--glow-neon)` / `drop-shadow(0 0 18px rgb(255 62 165 / 0.25))`→`var(--glow-role)` / `#fff`(カード背景)→`var(--surface-card)`
 - **フォント**: 見出し Zen Maru Gothic (700/900)、本文 M PLUS Rounded 1c (400/700)、数字 Baloo 2 (700)。Google Fonts、これ以外のウェイトを読み込まない
 - **アニメーション**: `transform`/`opacity` のみ。すべての演出に `prefers-reduced-motion: reduce` ガード必須（three.js/GSAPは初期化自体をスキップ）
 - **コントラスト**: 本文4.5:1以上。パステル（primary/secondary）を文字色に使わない
@@ -61,34 +65,84 @@ npm install --save-dev gsap three @types/three
 @source "../../partials";
 @source "../../src";
 
+/* 値はすべて .claude/skills/insider-game-tool-design/tokens/*.css（設計システムの正）から転記。
+   Tailwind のユーティリティを生やしたいものは @theme、それ以外は :root に置く。
+   余白（--space-*）とフォントサイズ（--text-*）は Tailwind 標準スケールと同値なので宣言しない。 */
 @theme {
+  /* colors.css — ライト面 */
   --color-base: #f3eef6;
   --color-primary: #f7c9de;
   --color-secondary: #c9def7;
   --color-accent: #5e3a87;
   --color-ink: #2b2438;
   --color-cta: #06c755;
+  /* colors.css — ダーク面 */
   --color-dark-base: #17131f;
   --color-dark-accent: #ff3ea5;
   --color-dark-sub: #5ee7ff;
   --color-dark-text: #ffc9e8;
   --color-dark-line: #3a2e4d;
+  /* typography.css */
   --font-heading: "Zen Maru Gothic", "M PLUS Rounded 1c", sans-serif;
   --font-body: "M PLUS Rounded 1c", "Zen Maru Gothic", sans-serif;
   --font-numeric: "Baloo 2", "M PLUS Rounded 1c", sans-serif;
+  --leading-body: 1.7;
+  --leading-tight: 1.25;
+  /* shape.css — 角丸（rounded-card / rounded-bubble / … が生える） */
+  --radius-card: 1.5rem;
+  --radius-bubble: 1.25rem;
+  --radius-img: 1rem;
+  --radius-input: 0.75rem;
+  --radius-pill: 9999px;
+  --radius-bubble-tail: 0.25rem;
+  /* shape.css — 影（shadow-card / shadow-cta / … が生える） */
+  --shadow-card: 0 4px 16px rgb(94 58 135 / 0.08);
+  --shadow-card-hover: 0 12px 28px rgb(94 58 135 / 0.16);
+  --shadow-pill: 0 2px 8px rgb(94 58 135 / 0.1);
+  --shadow-cta: 0 6px 20px rgb(6 199 85 / 0.35);
+  --shadow-nav: 0 -4px 20px rgb(94 58 135 / 0.15);
+  /* motion.css — イージング（ease-soft / ease-pop が生える） */
+  --ease-soft: ease;
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ユーティリティにしないトークン（var() 参照専用） */
+:root {
+  /* colors.css — セマンティックエイリアス */
+  --surface-page: var(--color-base);
+  --surface-card: #ffffff;
+  --surface-dark: var(--color-dark-base);
+  --surface-dark-card: var(--color-dark-line);
+  --text-body: var(--color-ink);
+  --text-heading: var(--color-accent);
+  --text-link: var(--color-accent);
+  --text-on-dark: var(--color-dark-text);
+  --text-heading-dark: var(--color-dark-accent);
+  --text-link-dark: var(--color-dark-sub);
+  --text-on-cta: #ffffff;
+  /* shape.css — 発光・ヒットエリア */
+  --glow-neon: 0 0 16px rgb(255 62 165 / 0.45);
+  --glow-role: drop-shadow(0 0 18px rgb(255 62 165 / 0.25));
+  --tap-min: 2.75rem;
+  /* motion.css — デュレーション */
+  --dur-press: 0.15s;
+  --dur-hover: 0.25s;
+  --dur-reveal: 0.6s;
 }
 
 @layer base {
   body {
-    background-color: var(--color-base);
-    color: var(--color-ink);
+    background-color: var(--surface-page);
+    color: var(--text-body);
     font-family: var(--font-body);
+    line-height: var(--leading-body);
     padding-bottom: 5.5rem; /* ボトムナビ分の逃げ */
   }
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 700;
-    color: var(--color-accent);
+    color: var(--text-heading);
+    line-height: var(--leading-tight);
   }
   /* 全面グレイン（ベタ塗り回避） */
   body::after {
@@ -110,16 +164,16 @@ npm install --save-dev gsap three @types/three
     justify-content: center;
     min-height: 3rem;
     padding: 0.75rem 2rem;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     background-color: var(--color-cta);
-    color: #fff;
+    color: var(--text-on-cta);
     font-family: var(--font-heading);
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 6px 20px rgb(6 199 85 / 0.35);
+    box-shadow: var(--shadow-cta);
     position: relative;
     overflow: hidden;
-    transition: transform 0.15s ease;
+    transition: transform var(--dur-press) var(--ease-soft);
   }
   .btn-cta:active { transform: scale(0.94); }
   /* シャインエフェクト（CTA唯一の常時演出） */
@@ -136,33 +190,33 @@ npm install --save-dev gsap three @types/three
     40%, 100% { left: 120%; }
   }
   .card {
-    border-radius: 1.5rem;
-    background-color: #fff;
+    border-radius: var(--radius-card);
+    background-color: var(--surface-card);
     padding: 1.5rem;
-    box-shadow: 0 4px 16px rgb(94 58 135 / 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--dur-hover) var(--ease-soft), box-shadow var(--dur-hover) var(--ease-soft);
   }
   @media (hover: hover) {
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgb(94 58 135 / 0.16);
+      box-shadow: var(--shadow-card-hover);
     }
     .btn-cta:hover { transform: scale(1.03); }
   }
   .section-dark {
-    background-color: var(--color-dark-base);
-    color: var(--color-dark-text);
+    background-color: var(--surface-dark);
+    color: var(--text-on-dark);
   }
   .section-dark h2, .section-dark h3 {
-    color: var(--color-dark-accent);
-    text-shadow: 0 0 16px rgb(255 62 165 / 0.45);
+    color: var(--text-heading-dark);
+    text-shadow: var(--glow-neon);
   }
 
   /* --- スクロールリビール --- */
   .reveal {
     opacity: 0;
     transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity var(--dur-reveal) var(--ease-soft), transform var(--dur-reveal) var(--ease-soft);
   }
   .reveal.revealed { opacity: 1; transform: none; }
 
@@ -175,13 +229,13 @@ npm install --save-dev gsap three @types/three
   }
   .speech > img { width: 3.5rem; height: 3.5rem; flex: none; }
   .speech > p {
-    border-radius: 1.25rem;
+    border-radius: var(--radius-bubble);
     padding: 0.75rem 1rem;
-    line-height: 1.7;
+    line-height: var(--leading-body);
   }
-  .speech-maru > p { background-color: var(--color-primary); color: var(--color-ink); border-top-left-radius: 0.25rem; }
+  .speech-maru > p { background-color: var(--color-primary); color: var(--text-body); border-top-left-radius: var(--radius-bubble-tail); }
   .speech-fudo { flex-direction: row-reverse; }
-  .speech-fudo > p { background-color: var(--color-dark-line); color: var(--color-dark-text); border-top-right-radius: 0.25rem; }
+  .speech-fudo > p { background-color: var(--surface-dark-card); color: var(--text-on-dark); border-top-right-radius: var(--radius-bubble-tail); }
 
   /* --- 旧クラス互換（Instructions/記事のHTML改修を最小化） --- */
   .color1 { color: var(--color-accent); }
@@ -190,39 +244,39 @@ npm install --save-dev gsap three @types/three
     position: relative;
     margin: 1rem 0;
     padding: 1rem 1.25rem;
-    border-radius: 1.25rem;
-    background-color: #fff;
-    box-shadow: 0 4px 16px rgb(94 58 135 / 0.08);
+    border-radius: var(--radius-bubble);
+    background-color: var(--surface-card);
+    box-shadow: var(--shadow-card);
   }
-  .manual { max-width: 100%; border-radius: 1rem; box-shadow: 0 4px 16px rgb(94 58 135 / 0.12); }
+  .manual { max-width: 100%; border-radius: var(--radius-img); box-shadow: var(--shadow-card); }
   .torokubtn { max-width: 220px; }
   .mkj { list-style: none; padding: 0; display: grid; gap: 0.5rem; }
   .mkj a {
     display: block;
-    min-height: 2.75rem;
+    min-height: var(--tap-min);
     padding: 0.6rem 1rem;
-    border-radius: 9999px;
-    background-color: #fff;
-    color: var(--color-accent);
+    border-radius: var(--radius-pill);
+    background-color: var(--surface-card);
+    color: var(--text-link);
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgb(94 58 135 / 0.1);
+    box-shadow: var(--shadow-pill);
   }
   .newicon {
     display: inline-block;
     margin-left: 0.5rem;
     padding: 0.1rem 0.6rem;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     background-color: var(--color-dark-accent);
-    color: #fff;
+    color: var(--text-on-cta);
     font-size: 0.7rem;
   }
   .counterspan {
     display: inline-block;
     padding: 0.4rem 1rem;
     font-family: var(--font-numeric);
-    background-color: #fff;
-    border-radius: 9999px;
+    background-color: var(--surface-card);
+    border-radius: var(--radius-pill);
   }
 
   /* --- カラオケのスライド送り（karaoke.ts が animationName を切り替える契約） --- */

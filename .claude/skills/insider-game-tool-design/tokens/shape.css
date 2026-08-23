@@ -1,0 +1,21 @@
+:root{
+/* 角丸 */
+--radius-card:1.5rem; /* カード */
+--radius-bubble:1.25rem; /* 吹き出し・アラート */
+--radius-img:1rem; /* 画像・FAQ */
+--radius-input:0.75rem; /* 入力欄 */
+--radius-pill:9999px; /* ボタン・ピル・バッジ */
+--radius-bubble-tail:0.25rem; /* 吹き出しの話者側の角 */
+/* シャドウ（バイオレット系の柔らかい影のみ） */
+--shadow-card:0 4px 16px rgb(94 58 135 / 0.08);
+--shadow-card-hover:0 12px 28px rgb(94 58 135 / 0.16);
+--shadow-pill:0 2px 8px rgb(94 58 135 / 0.10);
+--shadow-cta:0 6px 20px rgb(6 199 85 / 0.35);
+--shadow-nav:0 -4px 20px rgb(94 58 135 / 0.15);
+--glow-neon:0 0 16px rgb(255 62 165 / 0.45); /* ダーク面見出しのtext-shadow */
+--glow-role:drop-shadow(0 0 18px rgb(255 62 165 / 0.25)); /* 役職カードのfilter */
+/* 余白スケール */
+--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;
+/* ヒットエリア */
+--tap-min:2.75rem; /* 44px以上 */
+}

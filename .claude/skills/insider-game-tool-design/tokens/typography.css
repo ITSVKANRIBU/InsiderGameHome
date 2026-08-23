@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&family=M+PLUS+Rounded+1c:wght@400;700&family=Baloo+2:wght@700&display=swap");
+:root{
+--font-heading:"Zen Maru Gothic","M PLUS Rounded 1c",sans-serif; /* 見出し 700/900 */
+--font-body:"M PLUS Rounded 1c","Zen Maru Gothic",sans-serif; /* 本文 400/700 */
+--font-numeric:"Baloo 2","M PLUS Rounded 1c",sans-serif; /* 数字・欧文アクセント 700 */
+--text-xs:0.75rem;--text-sm:0.875rem;--text-base:1rem;--text-lg:1.125rem;--text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:1.875rem;--text-4xl:2.25rem;--text-6xl:3.75rem;
+--leading-body:1.7;--leading-tight:1.25;
+}

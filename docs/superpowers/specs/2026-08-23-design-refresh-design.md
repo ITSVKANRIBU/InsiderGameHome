@@ -14,6 +14,7 @@
 | CSS | Tailwind CSS v4 に一本化、レガシーCSS全削除 |
 | 3D/モーション | three.js による3Dヒーロー＋パララックスを実装（ユーザー指定）。補助にGSAP＋ネイティブAPI |
 | 画像 | すべて ChatGPT 画像生成（**必ず Codex の image_gen スキルを利用**）で事前制作 |
+| デザイントークン | `.claude/skills/insider-game-tool-design/tokens/*.css` を正とする（Claude Design プロジェクトから取り込み） |
 
 ---
 
@@ -28,7 +29,7 @@
 
 ## 2. 配色システム
 
-Tailwind v4 の `@theme` でデザイントークンとして一元管理する。
+トークン定義の正は `.claude/skills/insider-game-tool-design/tokens/colors.css`。実装は Tailwind v4 の `@theme` で一元管理する。
 
 ### ライト面（サイト全体のベース）
 

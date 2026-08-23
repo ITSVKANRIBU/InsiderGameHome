@@ -1,0 +1,27 @@
+:root{
+/* ライト面（サイト全体のベース）— HEX厳守 */
+--color-base:#F3EEF6; /* ウィスパーラベンダー: 背景基調 */
+--color-primary:#F7C9DE; /* ペタルピンク: カード・装飾・バッジ（文字色に使わない） */
+--color-secondary:#C9DEF7; /* ベビーブルー: セクション区切り・サブ装飾 */
+--color-accent:#5E3A87; /* ディープバイオレット: 見出し・キーカラー・リンク */
+--color-ink:#2B2438; /* ミッドナイトインク: 本文テキスト */
+--color-cta:#06C755; /* LINEグリーン: 友だち追加CTA専用（他用途禁止） */
+/* ダーク面（限定投入） */
+--color-dark-base:#17131F; /* アルモストブラック */
+--color-dark-accent:#FF3EA5; /* ネオンマゼンタ */
+--color-dark-sub:#5EE7FF; /* ネオンシアン */
+--color-dark-text:#FFC9E8; /* コットンキャンディピンク */
+--color-dark-line:#3A2E4D; /* フォグパープル: ダーク面カード背景・境界線 */
+/* セマンティックエイリアス */
+--surface-page:var(--color-base);
+--surface-card:#ffffff;
+--surface-dark:var(--color-dark-base);
+--surface-dark-card:var(--color-dark-line);
+--text-body:var(--color-ink);
+--text-heading:var(--color-accent);
+--text-link:var(--color-accent);
+--text-on-dark:var(--color-dark-text);
+--text-heading-dark:var(--color-dark-accent);
+--text-link-dark:var(--color-dark-sub);
+--text-on-cta:#ffffff;
+}

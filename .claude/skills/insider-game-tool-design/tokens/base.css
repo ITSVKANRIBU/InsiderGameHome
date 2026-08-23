@@ -1,0 +1,6 @@
+body{background-color:var(--surface-page);color:var(--text-body);font-family:var(--font-body);line-height:var(--leading-body);margin:0}
+h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;color:var(--text-heading);line-height:var(--leading-tight)}
+a{color:var(--text-link)}
+a:hover{opacity:0.8}
+/* 全面グレイン（ベタ塗り回避）: ページ側で <div class="grain"></div> を置く */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
