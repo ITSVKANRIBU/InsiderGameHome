@@ -1,3 +1,5 @@
+import "./common";
+
 const LAST_SLIDE = 4;
 
 function setDisabled(control: HTMLAnchorElement, disabled: boolean): void {

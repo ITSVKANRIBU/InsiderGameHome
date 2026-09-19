@@ -1,21 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head
     prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
   >
     <meta charset="UTF-8" />
-    <title>インサイダーゲームツール</title>
+    <title>使い方 | インサイダーゲームツール</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="インサイダーゲームのLINEBOTを公開しています。"
+      content="LINE BOTでインサイダーゲームを始めるためのガイド。村の作成、参加方法、特殊村や応用機能を手順に沿って紹介します。"
     />
     <meta
       name="keywords"
       content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール"
     />
-    <link rel="stylesheet" href="./contents/css/style.css" />
-    <script type="module" src="/src/pages/common.ts"></script>
+    <script type="module" src="/src/pages/instructions.ts"></script>
     <link
       rel="icon"
       type="image/vnd.microsoft.icon"
@@ -35,235 +34,481 @@
     />
     <meta property="og:locale" content="ja_JP" />
   </head>
-  <body>
+  <body class="guide-page">
+    <a class="skip-link" href="#guide-main">本文へスキップ</a>
     <div id="container">
-      <header>
-        {{> logo}}
-      </header>
-      {{> menubar}}
-      <div id="contents">
-        <section>
-          <h2 id="mkj">目次</h2>
-          <ul class="mkj">
-            <li><a href="#01">前提</a></li>
-            <li><a href="#02">村を作る場合（GM）</a></li>
-            <li><a href="#03">村を作る場合（神）</a></li>
-            <li><a href="#04">村に参加する場合</a></li>
-            <li>
-              <a href="#06"
-                >特殊村作成（特殊役職の設定や、ワードウルフ、パズルワードなど）</a
+      <header>{{> logo}}</header>
+      <main id="guide-main">
+        <div class="guide-hero">
+          <div>
+            <p class="eyebrow">PLAY GUIDE / 使い方</p>
+            <h1>準備はかんたん。<br />会話をはじめよう。</h1>
+            <p class="guide-lead">
+              BOTに送るのは、お題と人数。<br />役職の配布はまかせて、みんなでゲームを楽しもう。
+            </p>
+          </div>
+          <div class="guide-mini-flow" aria-label="開始までの3ステップ">
+            <span><b>01</b> BOTを追加</span><i aria-hidden="true">↓</i
+            ><span><b>02</b> 村をつくる</span><i aria-hidden="true">↓</i
+            ><span><b>03</b> 番号で参加 <i aria-hidden="true">↗</i></span>
+          </div>
+        </div>
+        <div class="guide-shortcuts">
+          <a href="#02"
+            ><span class="shortcut-symbol" aria-hidden="true">＋</span
+            ><span><small>HOST</small><strong>村をつくりたい</strong></span
+            ><span aria-hidden="true">↘</span></a
+          ><a href="#04"
+            ><span class="shortcut-symbol" aria-hidden="true">→</span
+            ><span><small>PLAYER</small><strong>村に参加したい</strong></span
+            ><span aria-hidden="true">↘</span></a
+          ><a href="#06"
+            ><span class="shortcut-symbol" aria-hidden="true">✳</span
+            ><span
+              ><small>CUSTOM</small><strong>自由な配役で遊びたい</strong></span
+            ><span aria-hidden="true">↘</span></a
+          >
+        </div>
+        <div class="guide-layout">
+          <aside class="guide-sidebar">
+            <nav aria-label="使い方の目次" id="mkj">
+              <p class="eyebrow">ON THIS PAGE</p>
+              <a href="#01">01 <span>はじめに</span></a
+              ><a href="#02">02 <span>村をつくる</span></a
+              ><a href="#03">03 <span>進行だけ担当する</span></a
+              ><a href="#04">04 <span>村に参加する</span></a
+              ><a href="#06">05 <span>特殊村で遊ぶ</span></a
+              ><a href="#05">06 <span>応用・便利な機能</span></a>
+            </nav>
+            <a class="guide-sidebar-help" href="/rule.html"
+              >ゲームのルールはこちら ↗</a
+            >
+          </aside>
+          <div class="guide-body">
+            <section class="guide-section" id="01">
+              <div class="guide-section-heading">
+                <span>01 / GET READY</span>
+                <h2>まずは、みんなで友だち追加。</h2>
+              </div>
+              <p>
+                LINEで遊ぶ参加者全員が「インサイダーゲームツール」を友だち追加してください。参加者同士がLINEの友だちである必要はありません。
+              </p>
+              <div class="guide-start-actions">
+                <a
+                  class="button button-primary"
+                  href="https://line.me/R/ti/p/%40966mpnqz"
+                  >LINEで友だち追加 <span aria-hidden="true">↗</span></a
+                ><a class="text-link" href="/line.html">ブラウザ版を使う ↗</a>
+              </div>
+              <div class="guide-note">
+                <span aria-hidden="true">i</span>
+                <p>
+                  このツールを通じて、参加者のLINEアカウントが他の参加者に表示されることはありません。会話は、対面や通話で楽しんでください。
+                </p>
+              </div>
+            </section>
+            <section class="guide-section" id="02">
+              <div class="guide-section-heading">
+                <span>02 / HOST A GAME</span>
+                <h2>村をつくる。</h2>
+                <p>自分がマスター（GM）になる場合</p>
+              </div>
+              <p>
+                GMはお題を知り、みんなの質問に答える役です。誰がインサイダーなのかは、GMにもわかりません。
+              </p>
+              <div class="guide-walkthrough">
+                <ol class="guide-steps">
+                  <li>
+                    <span>1</span>
+                    <div>
+                      <h3>「お題」と送る</h3>
+                      <p>
+                        BOTとのトークで
+                        <code>お題</code> と入力すると、新しい村ができます。
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>2</span>
+                    <div>
+                      <h3>答えになる言葉を送る</h3>
+                      <p>
+                        例えば
+                        <code>りんご</code
+                        >。迷ったら「お題の自動取得」も使えます。
+                      </p>
+                      <a href="#option1">お題を自動で選ぶ方法 ↓</a>
+                    </div>
+                  </li>
+                  <li>
+                    <span>3</span>
+                    <div>
+                      <h3>役職を配る人数を送る</h3>
+                      <p>
+                        GM以外に5人いるなら
+                        <code>5</code>
+                        と送信。表示された4桁の村番号を参加者に伝えます。
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+                <div class="guide-chat" aria-label="GMが村を作る会話の例">
+                  <div class="guide-chat-title">
+                    <span class="chat-dot"></span> BOTとのトーク
+                    <small>操作例</small>
+                  </div>
+                  <div class="chat-sent">お題</div>
+                  <div class="chat-received">
+                    村を作成しました。<br />お題を入力してください。
+                  </div>
+                  <div class="chat-sent">りんご</div>
+                  <div class="chat-received">
+                    お題を設定しました。<br />配る人数を入力してください。
+                  </div>
+                  <div class="chat-sent">5</div>
+                  <div class="chat-received">
+                    準備ができました。<br />村番号をみんなに伝えましょう。
+                  </div>
+                  <p>会話は説明用に簡略化しています。</p>
+                </div>
+              </div>
+              <details class="guide-screenshot">
+                <summary>
+                  実際の操作画面を見る<span aria-hidden="true">＋</span>
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/00_gm.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/00_gm.png"
+                      alt="実際の操作画面を見るの操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+              <div class="guide-tips">
+                <details id="option1">
+                  <summary>
+                    お題を自動で選びたい<span aria-hidden="true">＋</span>
+                  </summary>
+                  <div>
+                    <p>
+                      村の作成後、「お題の自動取得」を押すと候補が表示されます。「確定」で決定、「再取得」で別のお題に変更できます。途中で好きなお題を手入力しても構いません。
+                    </p>
+                    <details class="guide-screenshot">
+                      <summary>
+                        お題の自動取得の画面を見る<span aria-hidden="true"
+                          >＋</span
+                        >
+                      </summary>
+                      <figure>
+                        <a
+                          href="/contents/img/01_option.png"
+                          target="_blank"
+                          rel="noopener"
+                          ><img
+                            src="/contents/img/01_option.png"
+                            alt="お題の自動取得の画面を見るの操作例"
+                            loading="lazy"
+                        /></a>
+                        <figcaption>
+                          画像をタップすると、別タブで大きく表示できます。
+                        </figcaption>
+                      </figure>
+                    </details>
+                  </div>
+                </details>
+                <details id="option2">
+                  <summary>
+                    みんなが参加したか確認したい<span aria-hidden="true"
+                      >＋</span
+                    >
+                  </summary>
+                  <div>
+                    <p>
+                      村作成後の「確認」を押すと、役職を配った人数がわかります。「再確認」で状況を更新できます。
+                    </p>
+                    <details class="guide-screenshot">
+                      <summary>
+                        参加状況の確認画面を見る<span aria-hidden="true"
+                          >＋</span
+                        >
+                      </summary>
+                      <figure>
+                        <a
+                          href="/contents/img/02_option2.png"
+                          target="_blank"
+                          rel="noopener"
+                          ><img
+                            src="/contents/img/02_option2.png"
+                            alt="参加状況の確認画面を見るの操作例"
+                            loading="lazy"
+                        /></a>
+                        <figcaption>
+                          画像をタップすると、別タブで大きく表示できます。
+                        </figcaption>
+                      </figure>
+                    </details>
+                  </div>
+                </details>
+              </div>
+            </section>
+            <section class="guide-section" id="03">
+              <div class="guide-section-heading">
+                <span>03 / ORGANIZER MODE</span>
+                <h2>自分は、進行だけ担当したい。</h2>
+                <p>作成者がゲームに参加しない「神」モード</p>
+              </div>
+              <p>
+                GMも含めて参加者に役職をランダムに配るモードです。村を作る人はゲームに参加せず、誰がインサイダーかもわかりません。
+              </p>
+              <div class="command-sequence">
+                <span><small>最初に送る</small><code>神</code></span
+                ><b aria-hidden="true">→</b
+                ><span><small>お題を送る</small><code>りんご</code></span
+                ><b aria-hidden="true">→</b
+                ><span><small>人数を送る</small><code>6</code></span>
+              </div>
+              <p class="guide-caption">
+                例：GM1人・インサイダー1人・村人4人に配るなら「6」。作成者は人数に含めません。
+              </p>
+              <details class="guide-screenshot">
+                <summary>
+                  神モードの操作画面を見る<span aria-hidden="true">＋</span>
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/03_god.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/03_god.png"
+                      alt="神モードの操作画面を見るの操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+            </section>
+            <section class="guide-section" id="04">
+              <div class="guide-section-heading">
+                <span>04 / JOIN A GAME</span>
+                <h2>村番号を送れば、参加完了。</h2>
+              </div>
+              <ol class="guide-steps">
+                <li>
+                  <span>1</span>
+                  <div>
+                    <h3>村番号を教えてもらう</h3>
+                    <p>村を作った人から、数字4桁の村番号を受け取ります。</p>
+                  </div>
+                </li>
+                <li>
+                  <span>2</span>
+                  <div>
+                    <h3>BOTに、その番号を送る</h3>
+                    <p>
+                      自分の役職が届きます。インサイダーには、お題も表示されます。
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span>3</span>
+                  <div>
+                    <h3>自分の役職を確認して、ゲーム開始</h3>
+                    <p>
+                      役職はみんなに見せずに確認。全員の準備ができたら、GMへの質問を始めましょう。
+                    </p>
+                  </div>
+                </li>
+              </ol>
+              <div class="guide-note">
+                <span aria-hidden="true">!</span>
+                <p>
+                  お題を知っていることがバレないように。インサイダーの腕の見せどころです。
+                </p>
+              </div>
+              <details class="guide-screenshot">
+                <summary>
+                  村への参加画面を見る<span aria-hidden="true">＋</span>
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/05_mura.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/05_mura.png"
+                      alt="村への参加画面を見るの操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+              <details class="guide-screenshot">
+                <summary>
+                  インサイダーの表示例を見る<span aria-hidden="true">＋</span>
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/07_insider.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/07_insider.png"
+                      alt="インサイダーの表示例を見るの操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+            </section>
+            <section class="guide-section" id="06">
+              <div class="guide-section-heading">
+                <span>05 / CUSTOM GAME</span>
+                <h2>配るメッセージを、自由につくる。</h2>
+              </div>
+              <p>
+                特殊役職やワードウルフ、パズルワードなど。特殊村では、参加者に届けるメッセージを自分で設定できます。
+              </p>
+              <a class="guide-custom-link" href="/form.html"
+                ><span
+                  ><small>CUSTOM VILLAGE</small><strong>特殊村を作成する</strong
+                  ><span>人数とメッセージを設定して、村番号を発行。</span></span
+                ><b aria-hidden="true">↗</b></a
               >
-            </li>
-            <li><a href="#05">その他（オプション）</a></li>
-          </ul>
-        </section>
-        <section>
-          <h2 id="01">前提</h2>
-          <p>
-            <span class="color1"
-              ><strong
-                >※参加者全員が以下のラインアカウントをお友達追加しておく必要があります！</strong
-              ></span
-            ><br />
-            <strong>
-              　参加者同士がお友達である必要はありません！
-              <br />
-              　参加者のラインアカウントが他の参加者に知られることはありません！
-            </strong>
-            <br />
-            <a href="https://line.me/R/ti/p/%40966mpnqz"
-              ><img
-                class="torokubtn"
-                src="./contents/img/toroku.png"
-                alt="お友達追加ボタン"
-            /></a>
-          </p>
-          <br />
-          <span class="color1"><strong>■概要</strong></span
-          ><br />
-          <p>
-            <span class="color1"
-              ><strong>①参加者の１人が村の作成をします。</strong></span
+              <p>
+                作成後に発行される<strong>5桁の村番号</strong>を参加者へ共有してください。メッセージは入力した順に、村に参加した人へ1件ずつ配られます。
+              </p>
+              <p class="guide-caption">
+                BOTに
+                <code>@特殊</code> と送っても、特殊村作成の案内を開けます。
+              </p>
+            </section>
+            <section class="guide-section" id="05">
+              <div class="guide-section-heading">
+                <span>06 / MORE WAYS TO PLAY</span>
+                <h2>慣れてきたら、遊び方を変えて。</h2>
+              </div>
+              <div class="guide-tips">
+                <details id="wereword">
+                  <summary>
+                    <span><small>占師が加わる</small>ワーワーズ機能</span
+                    ><span aria-hidden="true">＋</span>
+                  </summary>
+                  <div>
+                    <p>
+                      村を作った人が、作成後に
+                      <code>@わーわーず</code>
+                      と送ると切り替わります。お題を知っている村人陣営の「占師」が加わります。
+                    </p>
+                    <dl class="guide-outcomes">
+                      <div>
+                        <dt>時間内に正解が出たら</dt>
+                        <dd>
+                          インサイダーが占師を当てれば、インサイダーの勝ち。
+                        </dd>
+                      </div>
+                      <div>
+                        <dt>時間内に正解が出なかったら</dt>
+                        <dd>
+                          投票でインサイダーを見つければ、村人陣営の勝ち。
+                        </dd>
+                      </div>
+                    </dl>
+                    <p>
+                      役職が1つ欠けます。欠けた役職を知っているのはGMだけです。
+                    </p>
+                  </div>
+                </details>
+                <details id="gyakumura">
+                  <summary>
+                    <span><small>いつもと逆の配役に</small>逆村機能</span
+                    ><span aria-hidden="true">＋</span>
+                  </summary>
+                  <div>
+                    <p>
+                      村を作った人が、作成後に
+                      <code>@逆村</code>
+                      と送ると切り替わります。お題を知らない村人が1人、他はインサイダーになります。GMがいる場合は、GMも1人います。
+                    </p>
+                    <p>
+                      考察のタイミングで逆村だったことを公表し、村人に票を集めるどっきりゲームです。
+                    </p>
+                  </div>
+                </details>
+              </div>
+              <details class="guide-screenshot">
+                <summary>
+                  村作成ボタンの使い方を見る<span aria-hidden="true">＋</span>
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/09_manu.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/09_manu.png"
+                      alt="村作成ボタンの使い方を見るの操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+              <details class="guide-screenshot">
+                <summary>
+                  友だちに紹介するQRコードの出し方<span aria-hidden="true"
+                    >＋</span
+                  >
+                </summary>
+                <figure>
+                  <a
+                    href="/contents/img/08_haifu.png"
+                    target="_blank"
+                    rel="noopener"
+                    ><img
+                      src="/contents/img/08_haifu.png"
+                      alt="友だちに紹介するQRコードの出し方の操作例"
+                      loading="lazy"
+                  /></a>
+                  <figcaption>
+                    画像をタップすると、別タブで大きく表示できます。
+                  </figcaption>
+                </figure>
+              </details>
+            </section>
+            <div class="guide-finish">
+              <div>
+                <p class="eyebrow">YOU’RE READY.</p>
+                <h2>あとは、みんなで話すだけ。</h2>
+                <p>まずはひとつ、村をつくってみよう。</p>
+              </div>
+              <a
+                class="button button-primary"
+                href="https://line.me/R/ti/p/%40966mpnqz"
+                >LINEで始める ↗</a
+              >
+            </div>
+            <a class="guide-back-top text-link" href="#guide-main"
+              >ページの先頭へ ↑</a
             >
-          </p>
-          <div class="balloon2-top">
-            <p>
-              『お題』と『参加人数』設定します。<br />村番号が表示されるため、村番号を参加者へ伝えます。
-            </p>
           </div>
-          <p>
-            <span class="color1"
-              ><strong
-                >②他の参加者は作成された村の番号をボットへ入力します。</strong
-              ></span
-            >
-          </p>
-          <div class="balloon2-top">
-            <p>
-              村番号（数字4桁）をラインボットへ入力すると自分の役職がわかります。インサイダーだった場合はお題が表示されます。
-            </p>
-          </div>
-        </section>
-
-        <div class="list"></div>
-        <br />
-
-        <section>
-          <h2 id="02">村を作る場合（GM）</h2>
-          <p>
-            <span class="color1"
-              ><strong>■村の作成者がGMとなる場合</strong></span
-            ><br />
-            GMはお題は知っていますが、どこがインサイダーかわかりません。
-          </p>
-          <h3>
-            作成方法（赤字が操作） <a href="#option1">※1</a>
-            <a href="#option2">※２</a>
-          </h3>
-          <img class="manual" src="./contents/img/00_gm.png" alt="マニュアル" />
-          <br /><br />
-          <h3 id="option1">※１　お題の自動取得</h3>
-          <img
-            class="manual"
-            src="./contents/img/01_option.png"
-            alt="マニュアル"
-          />
-          <br /><br />
-          <h3 id="option2">※２　確認機能</h3>
-          <img
-            class="manual"
-            src="./contents/img/02_option2.png"
-            alt="マニュアル"
-          />
-        </section>
-
-        <section>
-          <h2 id="03">村を作る場合（神）</h2>
-          <p>
-            <span class="color1"
-              ><strong>■村の作成者が神となる場合</strong></span
-            ><br />
-            神はゲームに参加しません。GMとインサイダーを参加者へランダムに配ります。神もどこがインサイダーかわかりません。
-          </p>
-          <h3>
-            作成方法（赤字が操作） <a href="#option1">※1</a>
-            <a href="#option2">※２</a>
-          </h3>
-          <img
-            class="manual"
-            src="./contents/img/03_god.png"
-            alt="マニュアル"
-          />
-        </section>
-
-        <section>
-          <h2 id="04">村に参加する場合</h2>
-          <p>
-            <span class="color1"
-              ><strong>■誰かが作成した村へ参加する場合</strong></span
-            ><br />
-            村番号を入力します。
-          </p>
-          <h3>参加方法（赤字が操作）</h3>
-          <img
-            class="manual"
-            src="./contents/img/05_mura.png"
-            alt="マニュアル"
-          />
-          <br /><br />
-          <h3>※インサイダーだった場合</h3>
-          <img
-            class="manual"
-            src="./contents/img/07_insider.png"
-            alt="マニュアル"
-          />
-        </section>
-
-        <section>
-          <h2 id="06">
-            特殊村作成（特殊役職の設定や、ワードウルフ、パズルワードなど）
-          </h2>
-          <p>
-            <span class="color1"
-              ><strong
-                >■自分で設定したメッセ―ジをランダムで配ります</strong
-              ></span
-            ><br />
-            独自のメッセ―ジをランダムに配布します。以下のサイトから村を作成します。参加者は村に参加することで、設定されたメッセージを確認できます。<br />
-            <a href="form.html"
-              ><img
-                class="torokubtn"
-                src="./contents/img/go.png"
-                alt="特殊村作成"
-            /></a>
-            <br />※「@特殊」とボットへ入力しても起動します
-          </p>
-        </section>
-
-        <section>
-          <h2 id="05">その他（オプション）</h2>
-          <p>
-            <span class="color1"><strong>■その他の操作</strong></span
-            ><br />
-            その他実装している機能の紹介
-          </p>
-          <h3 id="wereword">ワーワーズ機能<span class="newicon">NEW</span></h3>
-          <p>
-            <span class="keiko_yellow"
-              ><strong
-                >村作成後に作成者が「@わーわーず」を入力するとワーワード専用の村が作成されます。</strong
-              ></span
-            ><br />
-            ●ルール<br />
-            占師が追加されたインサイダーゲームです。<br />
-            <br />
-
-            ●詳細<br />
-            占師はお題を知っている村人陣営です。<br />
-            勝敗が変わります。<br />
-
-            <br />
-            ・時間内にお題が出た場合<br />
-            インサイダーの人が占師を当てればインサイダーの勝ちです。<br />
-            <br />
-            ・時間内にお題が出なかった場合<br />
-            インサイダーを投票で見つければ村人陣営の勝ちです。
-
-            <br />
-            <br />
-            ※注意点は1人だけ役職が欠けます。<br />
-            GMだけが欠けた役職を知っています。
-          </p>
-          <h3 id="gyakumura">逆村機能</h3>
-          <p>
-            <span class="keiko_yellow"
-              ><strong
-                >村作成後に作成者が「@逆村」を入力すると逆村となります。</strong
-              ></span
-            ><br />
-            お題を知らない村人の役職が１人となり、他がインサイダーとなります。（GMがいる場合は、GMは１人います。）<br />
-            考察のタイミングで逆村だったことを公表し、村人に票を集めるどっきりゲームとなります。
-          </p>
-          <h3>村を作成するボタン</h3>
-          <img
-            class="manual"
-            src="./contents/img/09_manu.png"
-            alt="マニュアル"
-          />
-          <br /><br />
-          <h3>他の人へ配布したい場合（QRコードの表示）</h3>
-          <img
-            class="manual"
-            src="./contents/img/08_haifu.png"
-            alt="マニュアル"
-          />
-        </section>
-      </div>
-      <!--/contents-->
+        </div>
+      </main>
       {{> footer}}
-      <div id="page_top"><a href="#"></a></div>
-      <div id="page_top2"></div>
     </div>
-    <!--/container-->
   </body>
 </html>

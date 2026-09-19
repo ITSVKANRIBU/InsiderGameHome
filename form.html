@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head
     prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
   >
     <meta charset="UTF-8" />
-    <title>インサイダーゲームツール</title>
+    <title>特殊村作成 | インサイダーゲームツール</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -14,7 +14,6 @@
       name="keywords"
       content="インサイダーゲーム,人狼,インサイダーゲームツール,正体隠匿,ボードゲーム,ラインボット,インサイダー,インサイダーツール"
     />
-    <link rel="stylesheet" href="./contents/css/style.css" />
     <link
       rel="icon"
       type="image/vnd.microsoft.icon"
@@ -33,137 +32,162 @@
       content="特殊な配役をしたい場合はこちらから"
     />
     <meta property="og:locale" content="ja_JP" />
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
     <script type="module" src="/src/pages/form.ts"></script>
   </head>
-  <body class="eqnoreboot">
-    {{> header}}
+  <body class="village-page">
+    <a class="skip-link" href="#village-main">本文へスキップ</a>
     <div id="container">
-      <header>
-        {{> logo}}
-      </header>
-      <div
-        id="contents"
-        class="box box-border mx-auto w-full !px-[15px] sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px]"
-      >
-        <section>
-          <h2 class="text-center !text-[2rem] !font-medium !leading-[1.2]">
-            特殊村作成
-          </h2>
-          <div class="relative -mx-[15px] flex flex-wrap justify-center pb-5">
-            <div>
-              <div class="spinner_area">
-                <input
-                  type="number"
-                  value="5"
-                  class="counter1 text-right w-1/4 countlabel"
-                  data-max="20"
-                  data-min="2"
-                  disabled
-                />
-                <label class="countlabel">人の村です　　</label>
-                <input
-                  type="button"
-                  value="＋"
-                  class="btnspinner"
-                  data-cal="1"
-                  data-target=".counter1"
-                />
-                <input
-                  type="button"
-                  value="－"
-                  class="btnspinner"
-                  data-cal="-1"
-                  data-target=".counter1"
-                />
-              </div>
-              <div class="group">
-                <div class="userdiv">
-                  <img src="./contents/img/usagi.png" />
-                  <label>参加者1</label>
-                  <div class="messageInput">
-                    <textarea
-                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
-                      name="message"
-                      placeholder="送りたいメッセージを入力"
-                      maxlength="150"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="userdiv">
-                  <img src="./contents/img/usagi.png" />
-                  <label>参加者2</label>
-                  <div class="messageInput">
-                    <textarea
-                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
-                      name="message"
-                      placeholder="送りたいメッセージを入力"
-                      maxlength="150"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="userdiv">
-                  <img src="./contents/img/usagi.png" />
-                  <label>参加者3</label>
-                  <div class="messageInput">
-                    <textarea
-                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
-                      name="message"
-                      placeholder="送りたいメッセージを入力"
-                      maxlength="150"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="userdiv">
-                  <img src="./contents/img/usagi.png" />
-                  <label>参加者4</label>
-                  <div class="messageInput">
-                    <textarea
-                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
-                      name="message"
-                      placeholder="送りたいメッセージを入力"
-                      maxlength="150"
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="userdiv">
-                  <img src="./contents/img/usagi.png" />
-                  <label>参加者5</label>
-                  <div class="messageInput">
-                    <textarea
-                      class="block box-border w-full rounded border border-gray-300 bg-white !px-3 !py-1.5 text-base leading-normal text-gray-700 focus:border-blue-500 focus:outline-none"
-                      name="message"
-                      placeholder="送りたいメッセージを入力"
-                      maxlength="150"
-                    ></textarea>
-                  </div>
+      <header>{{> logo}}</header>
+      <main id="village-main">
+        <div class="builder-intro">
+          <p class="eyebrow">CUSTOM GAME / 特殊村作成</p>
+          <h1>配る言葉から、<br class="mobile-only" />ゲームをつくろう。</h1>
+          <p>
+            役職も、お題も、ひとことも。<br
+              class="mobile-only"
+            />参加者に届けたいメッセージを自由に設定。
+          </p>
+        </div>
+        <form id="village-form" class="builder-layout">
+          <fieldset class="builder-fields">
+            <section class="builder-section" aria-labelledby="people-title">
+              <div class="builder-section-title">
+                <span class="section-badge">01</span>
+                <div>
+                  <h2 id="people-title">参加人数を決める</h2>
+                  <p>メッセージを受け取る人数を選んでください。</p>
                 </div>
               </div>
-              <input type="hidden" name="button" value="create" />
-
-              <div class="buttonarea">
-                <button class="button" type="button">村作成</button>
-                <div
-                  class="success-alert infomessage w-full rounded border border-green-300 bg-green-100 p-3 text-green-800"
-                  role="alert"
-                >
-                  <strong id="villagenum"></strong
-                  >村を作成しました。<br />参加者へ番号を伝えてください
+              <div class="people-control">
+                <div>
+                  <span class="control-label">参加人数</span
+                  ><small>2〜20人まで</small>
                 </div>
-                <div
-                  class="danger-alert infomessage w-full rounded border border-red-300 bg-red-100 p-3 text-red-800"
-                  role="alert"
-                >
-                  異常が発生しました。
+                <div class="stepper">
+                  <button
+                    type="button"
+                    id="decrease"
+                    aria-label="参加人数を減らす"
+                  >
+                    −</button
+                  ><output id="participant-count" aria-live="polite"
+                    >5<span>人</span></output
+                  ><button
+                    type="button"
+                    id="increase"
+                    aria-label="参加人数を増やす"
+                  >
+                    ＋
+                  </button>
                 </div>
               </div>
+            </section>
+            <section class="builder-section" aria-labelledby="messages-title">
+              <div class="builder-section-title">
+                <span class="section-badge">02</span>
+                <div>
+                  <h2 id="messages-title">メッセージを用意する</h2>
+                  <p>それぞれに配る内容を、150文字以内で入力。</p>
+                </div>
+              </div>
+              <div class="delivery-note">
+                <span aria-hidden="true">↳</span>
+                <p>
+                  <strong>村に参加した順に配られます。</strong
+                  ><br />参加者の名前や役職が、自動で割り当てられるわけではありません。
+                </p>
+              </div>
+              <div id="message-list"></div>
+              <p class="optional-note">
+                空欄の場合は「メッセージは特にありません。」が届きます。
+              </p>
+            </section>
+          </fieldset>
+          <aside class="builder-summary" aria-label="作成内容の確認">
+            <p class="eyebrow">YOUR VILLAGE</p>
+            <h2>今回の特殊村</h2>
+            <dl>
+              <div>
+                <dt>参加人数</dt>
+                <dd><span id="summary-count">5</span> 人</dd>
+              </div>
+              <div>
+                <dt>メッセージ入力済み</dt>
+                <dd>
+                  <span id="filled-count">0</span> /
+                  <span id="total-count">5</span>
+                </dd>
+              </div>
+            </dl>
+            <div class="summary-next">
+              <span class="mini-mark" aria-hidden="true">↗</span>
+              <p>
+                作成すると<strong>5桁の村番号</strong>が発行されます。参加者に番号を伝えれば、準備完了です。
+              </p>
             </div>
+            <div
+              id="create-error"
+              class="builder-error"
+              role="alert"
+              hidden
+            ></div>
+            <button id="create-village" class="create-button" type="submit">
+              <span>この内容で村を作成</span><span aria-hidden="true">↗</span>
+            </button>
+            <p class="submit-note">メッセージは参加者だけに、1件ずつ。</p>
+          </aside>
+        </form>
+        <section
+          id="village-result"
+          class="village-result"
+          tabindex="-1"
+          aria-labelledby="result-title"
+          hidden
+        >
+          <span class="result-check" aria-hidden="true">✓</span>
+          <p class="eyebrow">READY TO PLAY</p>
+          <h2 id="result-title">村ができました。</h2>
+          <p>この番号を参加者に共有してください。</p>
+          <div class="village-number">
+            <span>村番号</span><strong id="village-number"></strong>
           </div>
+          <button id="copy-number" class="create-button" type="button">
+            村番号をコピー
+          </button>
+          <p id="copy-status" role="status"></p>
+          <div class="result-instructions">
+            <h3>参加するには</h3>
+            <ol>
+              <li>LINE BOT、またはブラウザ版を開く。</li>
+              <li>村番号を送ると、メッセージが届きます。</li>
+            </ol>
+            <a class="text-link" href="/line.html">ブラウザ版を開く ↗</a>
+          </div>
+          <button id="edit-village" class="edit-button" type="button">
+            入力内容に戻る
+          </button>
         </section>
-      </div>
-      <!--/contents-->
+        <details class="builder-help">
+          <summary>
+            特殊村って、どう使うの？<span aria-hidden="true">＋</span>
+          </summary>
+          <div>
+            <p>
+              通常の配役にとらわれず、参加者に好きなメッセージを配れる機能です。役職の説明や秘密のお題など、遊び方に合わせて入力してください。
+            </p>
+            <p>
+              メッセージは入力欄の上から、村に参加した順に届きます。作成者も受け取る場合は、参加人数に含めてください。
+            </p>
+            <a class="text-link" href="/Instructions.html"
+              >ツールの使い方を見る ↗</a
+            >
+          </div>
+        </details>
+        <noscript
+          ><p>特殊村の作成にはJavaScriptを有効にしてください。</p></noscript
+        >
+      </main>
       {{> footer}}
     </div>
-    <!--/container-->
   </body>
 </html>

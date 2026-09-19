@@ -1,20 +1,29 @@
+import "../styles/site.css";
+
 function initSmoothScroll(): void {
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (event) => {
-      const href = anchor.getAttribute("href") ?? "";
-      const target =
-        href === "#" || href === ""
-          ? document.documentElement
-          : document.querySelector(href);
+  document
+    .querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+    .forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        const href = anchor.getAttribute("href") ?? "";
+        const target =
+          href === "#" || href === ""
+            ? document.documentElement
+            : document.getElementById(decodeURIComponent(href.slice(1)));
 
-      if (!target) {
-        return;
-      }
+        if (!target) {
+          return;
+        }
 
-      event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+        });
+      });
     });
-  });
 }
 
 function initPageTop(): void {
@@ -64,62 +73,19 @@ function initPageTop(): void {
   });
 }
 
-function initLateralNavigation(): void {
-  const trigger = document.querySelector<HTMLAnchorElement>(".navi-trigger");
-  const container = document.querySelector<HTMLElement>("#container");
-  const navi = document.querySelector<HTMLElement>("#navi");
-  const navigationWrapper = document.querySelector<HTMLElement>(
-    ".navigation-wrapper",
-  );
-
-  if (!trigger || !container || !navi || !navigationWrapper) {
-    return;
-  }
-
-  let isLateralNavAnimating = false;
-  const finishAnimation = (): void => {
-    isLateralNavAnimating = false;
-    if (!document.body.classList.contains("navigation-is-open")) {
-      container.classList.remove("navigation-main");
-    }
-  };
-
-  navigationWrapper.addEventListener("transitionend", finishAnimation);
-
-  trigger.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    if (isLateralNavAnimating) {
-      return;
-    }
-
-    if (trigger.closest(".csstransitions")) {
-      isLateralNavAnimating = true;
-    }
-
-    container.classList.add("navigation-main");
-    navi.style.opacity = "1";
-    document.body.classList.toggle("navigation-is-open");
-
-    if (!document.body.classList.contains("navigation-is-open")) {
-      navi.style.transition = "opacity 650ms ease";
-      navi.style.opacity = "0";
-      window.setTimeout(finishAnimation, 650);
-    }
-  });
-}
-
 function initFadeInAnimations(): void {
   window.addEventListener("scroll", () => {
     const windowHeight = window.innerHeight;
     const topWindow = window.scrollY;
 
-    document.querySelectorAll<HTMLElement>(".animationFadeIn").forEach((target) => {
-      const targetPosition = target.getBoundingClientRect().top + topWindow;
-      if (topWindow > targetPosition - windowHeight + 100) {
-        target.classList.add("fadeInDown");
-      }
-    });
+    document
+      .querySelectorAll<HTMLElement>(".animationFadeIn")
+      .forEach((target) => {
+        const targetPosition = target.getBoundingClientRect().top + topWindow;
+        if (topWindow > targetPosition - windowHeight + 100) {
+          target.classList.add("fadeInDown");
+        }
+      });
   });
 }
 
@@ -131,13 +97,21 @@ export function initCommonPage(): void {
   document.documentElement.dataset.commonInitialized = "true";
   initSmoothScroll();
   initPageTop();
-  initLateralNavigation();
+  document
+    .querySelectorAll<HTMLAnchorElement>(".site-nav a")
+    .forEach((link) => {
+      if (link.pathname === window.location.pathname) {
+        link.setAttribute("aria-current", "page");
+      }
+    });
   initFadeInAnimations();
 }
 
 if (typeof document !== "undefined") {
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCommonPage, { once: true });
+    document.addEventListener("DOMContentLoaded", initCommonPage, {
+      once: true,
+    });
   } else {
     initCommonPage();
   }
