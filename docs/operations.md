@@ -16,17 +16,14 @@ npm ci
 npm run dev
 ```
 
-テストと本番相当のビルドを確認する。
+本番相当のビルドを確認する。
 
 ```bash
-npm run test
 npm run build
 npm run preview
 ```
 
 `npm run build` は `dist/` に全ページを生成する。生成物には、公開ページ、`contents/` 配下の直リンク対象アセット、`_redirects` が含まれる。ビルド後は、ページ URL と旧 URL のリダイレクトが維持されていることを確認する。
-
-外部 API の実リクエストは村の状態を変更するため、通常の検証では実行しない。フォームの payload とチャットの応答処理は、テスト内のモックで確認する。
 
 ## Netlify 配信
 
@@ -36,11 +33,7 @@ Netlify の設定は `netlify.toml` で管理する。
 - 公開ディレクトリ: `dist`
 - Node.js: 22.22.2
 
-`master` への push が本番デプロイになる。公開前に `npm run test` と `npm run build` を実行し、`dist/` の公開パスに意図しない変更がないことを確認する。
-
-## API 接続先の切り替え
-
-API のベース URL はビルド時環境変数 `VITE_API_BASE` で上書きできる。未指定時は本番バックエンド URL を使用する。API のパスや payload の形式を変更する場合は、先に [バックエンド API 仕様](api-specification.md) とバックエンド側の契約を確認する。
+`master` への push が本番デプロイになる。公開前に `npm run build` を実行し、`dist/` の公開パスに意図しない変更がないことを確認する。
 
 ## リダイレクトと公開アセット
 

@@ -23,8 +23,6 @@ export default defineConfig({
         index: fromRoot("./index.html"),
         rule: fromRoot("./rule.html"),
         Instructions: fromRoot("./Instructions.html"),
-        form: fromRoot("./form.html"),
-        line: fromRoot("./line.html"),
         opinion: fromRoot("./opinion.html"),
         "article/article_001": fromRoot("./article/article_001.html"),
         "article/article_002": fromRoot("./article/article_002.html"),

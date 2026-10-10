@@ -6,7 +6,7 @@ InsiderGameHome — インサイダーゲーム用 LINE BOT の紹介・マニ�
 
 - デプロイ先は Netlify（https://insidergametool.netlify.app）。**master への push が本番デプロイになる。
 - `_redirects` が旧パス `/webcontent/*` をルートへリダイレクトしている（互換維持のため残す）。
-- 外部APIの詳細仕様は `docs/api-specification.md` を参照すること。
+- ブラウザ版の村画面は外部サイト（https://insidergame.fyi/village）に移行済み。このサイトはリンクのみ持ち、外部APIとは連携しない。
 
 ## 開発原則
 

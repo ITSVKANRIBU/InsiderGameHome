@@ -80,7 +80,7 @@
 }
 .guide-shortcuts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 60px;
 }
@@ -467,43 +467,6 @@
   color: var(--muted);
   line-height: 1.95;
 }
-.guide-custom-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: 8px;
-  padding: 26px;
-  margin: 23px 0;
-  text-decoration: none;
-}
-.guide-custom-link:hover {
-  background: #353f2f;
-  color: var(--paper);
-}
-.guide-custom-link small {
-  font: 9px Arial;
-  letter-spacing: 1.5px;
-  color: var(--lime);
-  display: block;
-  margin-bottom: 11px;
-}
-.guide-custom-link strong {
-  font-size: 23px;
-  display: block;
-  margin-bottom: 7px;
-}
-.guide-custom-link span > span {
-  font-size: 11px;
-  color: #c6ccbd;
-}
-.guide-custom-link > b {
-  font-size: 29px;
-  color: var(--lime);
-  font-weight: 400;
-}
 .guide-outcomes {
   margin: 20px 0;
   font-size: 12px;
@@ -769,16 +732,7 @@
     padding: 6px 9px;
     font-size: 14px;
   }
-  .guide-custom-link {
-    padding: 22px 18px;
-  }
-  .guide-custom-link strong {
-    font-size: 20px;
-  }
-  .guide-custom-link span > span {
-    font-size: 10px;
-  }
-  .guide-finish {
+        .guide-finish {
     padding: 24px 20px;
     gap: 19px;
   }

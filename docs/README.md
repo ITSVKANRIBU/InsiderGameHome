@@ -5,7 +5,6 @@
 ## 現行仕様
 
 - [システム構成](architecture.md): 配信構成、ページ構成、コードと外部サービスの境界。
-- [バックエンド API 仕様](api-specification.md): `InsiderGameHome` から利用する公開 API の契約。
 - [運用手順](operations.md): 開発、テスト、ビルド、Netlify 配信の手順と確認事項。
 
 ## 作業資料
