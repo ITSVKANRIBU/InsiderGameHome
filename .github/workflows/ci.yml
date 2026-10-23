@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          # netlify.toml の NODE_VERSION に合わせる
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  # Dependabot の PR は、ビルドと Netlify のデプロイプレビューが成功したら自動でマージする
+  dependabot-auto-merge:
+    if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - name: Wait for Netlify deploy preview
+        run: |
+          # Netlify は commit status (netlify/<site>/deploy-preview) で結果を報告する。
+          # combined status が success になるまで最大 15 分待つ。
+          for i in $(seq 1 60); do
+            state=$(gh api "repos/$GH_REPO/commits/$HEAD_SHA/status" --jq .state)
+            echo "combined status: $state ($i/60)"
+            case "$state" in
+              success) exit 0 ;;
+              failure|error) echo "::error::A commit status failed"; exit 1 ;;
+            esac
+            sleep 15
+          done
+          echo "::error::Timed out waiting for commit statuses"
+          exit 1
+      - name: Merge pull request
+        run: gh pr merge "$PR_NUMBER" --merge
